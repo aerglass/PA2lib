@@ -125,11 +125,15 @@ void SPA_unloadsprite(int screen, int ramslot, int vramslot) {
     // vram
     PA_FreeSpriteGfx(screen, vramslot);
 }
+void SPA_UpdateOam() {
+    PA_SpriteOamSet(1);
+    oamUpdate(&oamSub);
 
+    PA_SpriteOamSet(0);
+    oamUpdate(&oamMain);
+}
 
-
-
-
+    
 #endif
 
 #ifdef __cplusplus
