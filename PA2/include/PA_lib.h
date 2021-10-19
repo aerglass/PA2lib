@@ -132,7 +132,11 @@ void SPA_UpdateOam() {
     PA_SpriteOamSet(0);
     oamUpdate(&oamMain);
 }
-
+void SPA_InitBg(){
+    PA_InitBgBuffers();
+	PA_InitBg(0);
+	PA_InitBg(1);
+}
     
 #endif
 
