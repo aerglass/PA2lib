@@ -14,3 +14,5 @@ thus it can be incompatible with recent versions of libnds/devkitarm
   it's nightfox's lib for libnds but more simple (instead of initiledbg is initbg)
 <h2>Examples?</h2>
 Not yet lol
+<h2>Credits</h2>
+<strong>thanks to knightfox 75 for nightfox's lib for libnds</strong>
