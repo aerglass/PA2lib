@@ -103,6 +103,29 @@ b = (3 << 11);
 // Libreria 3D, Sprites
 #include "PA_sprite3d.h"
 
+//do simplepalib things
+void SPA_loadbg(const char *dir, const char *name, int width, int height, int screen, int layer) {
+    PA_LoadBg(dir, name, width, height);
+    PA_CreateBg(screen, layer, name);
+}
+void SPA_unloadbg(int screen, int layer, const char *name) {
+    PA_DeleteBg(screen, layer);
+    PA_UnloadBg(name);
+}
+void SPA_loadfont(const char *file, const char *fontname, int width, int height, int rot, int screen, int layer) {
+    PA_LoadFont(file, fontname, width, height, rot);
+    PA_CreateTextLayer(screen, layer, rot, fontname);
+}
+// unload gfx and pallete in ram and vram
+void SPA_unloadsprite(int screen, int ramslot, int vramslot) {
+    // ram
+    PA_UnloadSpriteGfx(ramslot);
+    PA_UnloadSpritePal(ramslot);
+
+    // vram
+    PA_FreeSpriteGfx(screen, vramslot);
+}
+
 
 
 
