@@ -30,12 +30,12 @@ PA_TYPE_CMAP_IPAO PA_CMAP[PA_SLOTS_CMAP];
 
 
 // Funcion PA_InitCmapBuffers();
-void PA_InitCmapBuffers(void) {
+void PA_InitMapBuffers(void) {
 	u8 n = 0;
 	for (n = 0; n < PA_SLOTS_CMAP; n ++) {
 		PA_CMAP[n].tiles = NULL;		// Inicializa los punteros de los buffers
 		PA_CMAP[n].map = NULL;
-		PA_CMAP[n].tiles_size = 0;		// Tamaño de archivo
+		PA_CMAP[n].tiles_size = 0;		// TamaÃ±o de archivo
 		PA_CMAP[n].map_size = 0;
 		PA_CMAP[n].width = 0;			// Ancho del mapa
 		PA_CMAP[n].height = 0;			// Alto del mapa
@@ -46,7 +46,7 @@ void PA_InitCmapBuffers(void) {
 
 
 // Funcion PA_ResetCmapBuffers();
-void PA_ResetCmapBuffers(void) {
+void PA_ResetMapBuffers(void) {
 	u8 n = 0;
 	for (n = 0; n < PA_SLOTS_CMAP; n ++) {
 		free(PA_CMAP[n].tiles);		// Vacia los buffers
@@ -58,7 +58,7 @@ void PA_ResetCmapBuffers(void) {
 
 
 // Funcion PA_LoadColisionMap();
-void PA_LoadColisionMap(const char* file, u8 id, u16 width, u16 height) {
+void PA_LoadMap(const char* file, u8 id, u16 width, u16 height) {
 
 	// Verifica el rango de Id's
 	if ((id < 0) || (id >= PA_SLOTS_CMAP)) {
@@ -84,7 +84,7 @@ void PA_LoadColisionMap(const char* file, u8 id, u16 width, u16 height) {
 	sprintf(filename, "%s/%s.cmp", PA_ROOTFOLDER, file);
 	file_id = fopen(filename, "rb");
 	if (file_id) {	// Si el archivo existe...
-		// Obten el tamaño del archivo
+		// Obten el tamaÃ±o del archivo
 		fseek(file_id, 0, SEEK_END);
 		PA_CMAP[id].map_size = ftell(file_id);
 		rewind(file_id);
@@ -112,7 +112,7 @@ void PA_LoadColisionMap(const char* file, u8 id, u16 width, u16 height) {
 
 
 // Funcion PA_UnloadColisionMap();
-void PA_UnloadColisionMap(u8 id) {
+void PA_UnloadMap(u8 id) {
 
 	// Verifica el rango de Id's
 	if ((id < 0) || (id >= PA_SLOTS_CMAP)) {
@@ -160,7 +160,7 @@ u16 PA_GetTile(u8 slot, s32 x, s32 y) {
 		u16 tile_x = (x >> 3);
 		u16 tile_y = (y >> 3) + 1;		// +1, por que la primera fila se reserva para la referencia de tiles
 
-		// Calcula el nº de tile
+		// Calcula el nÂº de tile
 		u32 address = (((tile_y * columns) + tile_x) << 1);
 
 		// Obten los bytes
@@ -197,9 +197,9 @@ void PA_SetTile(u8 slot, s32 x, s32 y, u16 value) {
 		u16 tile_x = (x >> 3);
 		u16 tile_y = (y >> 3) + 1;		// +1, por que la primera fila se reserva para la referencia de tiles
 
-		// Calcula el nº de tile
+		// Calcula el nÂº de tile
 		u32 address = (((tile_y * columns) + tile_x) << 1);
-		// nº de tile x2, dado que el mapa es de 16 bits (2 bytes por dato) y el buffer
+		// nÂº de tile x2, dado que el mapa es de 16 bits (2 bytes por dato) y el buffer
 		// es de 8 bits, se lee el 2do byte, por eso se multiplica por 2.
 
 		// Calcula los valores de los bytes
@@ -245,7 +245,7 @@ void PA_LoadColisionBg(const char* file, u8 id, u16 width, u16 height) {
 	sprintf(filename, "%s/%s.dat", PA_ROOTFOLDER, file);
 	file_id = fopen(filename, "rb");
 	if (file_id) {	// Si el archivo existe...
-		// Obten el tamaño del archivo
+		// Obten el tamaÃ±o del archivo
 		fseek(file_id, 0, SEEK_END);
 		PA_CMAP[id].tiles_size = ftell(file_id);
 		rewind(file_id);
@@ -265,7 +265,7 @@ void PA_LoadColisionBg(const char* file, u8 id, u16 width, u16 height) {
 	sprintf(filename, "%s/%s.cmp", PA_ROOTFOLDER, file);
 	file_id = fopen(filename, "rb");
 	if (file_id) {	// Si el archivo existe...
-		// Obten el tamaño del archivo
+		// Obten el tamaÃ±o del archivo
 		fseek(file_id, 0, SEEK_END);
 		PA_CMAP[id].map_size = ftell(file_id);
 		rewind(file_id);
