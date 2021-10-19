@@ -1,6 +1,6 @@
 # PA2lib
 Programmer's arsenal 2 (continuation of PALib and based on Nightfox's lib)
-<h2> why?<h2>
+<h2> why?</h2>
 Nightfox's lib for libnds isn't updated anymore.
 thus it can be incompatible with recent versions of libnds/devkitarm
   <h2> Why is called PA2lib </h2>
@@ -11,3 +11,6 @@ thus it can be incompatible with recent versions of libnds/devkitarm
   <h2>nice, but how do i install it?</h2>
   installation requieres modifing the modifing the makefile and compile the lib.
   Compile the lib (double click makelib.bat) and then drag and drop the Include and lib folder
+  it's nightfox's lib for libnds but more simple (instead of initiledbg is initbg)
+<h2>Examples?</h2>
+Not yet lol
