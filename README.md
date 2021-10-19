@@ -16,3 +16,4 @@ thus it can be incompatible with recent versions of libnds/devkitarm
 Not yet lol
 <h2>Credits</h2>
 <strong>thanks to knightfox 75 for nightfox's lib for libnds</strong>
+Thanks to PipeWarp because of simpleNFL
