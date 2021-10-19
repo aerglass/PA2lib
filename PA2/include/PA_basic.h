@@ -54,7 +54,7 @@ void PA_Error(u16 code, const char* text, u32 value);
 
 
 // Funcion PA_SetRootFolder();
-void PA_SetRootFolder(const char* folder);
+void PA_SetRoot(const char* folder);
 // Define el nombre de la carpeta que se usara como "root" si se usa la FAT
 
 
