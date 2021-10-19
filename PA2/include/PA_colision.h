@@ -34,7 +34,7 @@ typedef struct {
 	char* tiles;		// Buffer para almacenar los tiles
 	char* map;			// Buffer para almacenar el mapa
 	char* pal;			// Buffer para almacenar la paleta
-	u32 tiles_size;		// Tamaño de los archivos
+	u32 tiles_size;		// TamaÃ±o de los archivos
 	u32 map_size;
 	u32 pal_size;
 	u16 width;			// Ancho del mapa (en pixeles)
@@ -47,27 +47,27 @@ extern PA_TYPE_CMAP_IPAO PA_CMAP[PA_SLOTS_CMAP];		// Datos de los mapas de colis
 
 
 // Funcion PA_InitCmapBuffers();
-void PA_InitCmapBuffers(void);
+void PA_InitMapBuffers(void);
 // Inicializa los buffers que almacenaran los mapas de colision
 // Debes usar esta funcion una unica vez antes de cargar ningun mapa de colision
 
 
 
 // Funcion PA_ResetCmapBuffers();
-void PA_ResetCmapBuffers(void);
+void PA_ResetMapBuffers(void);
 // Reinicia los buffers y variables de los mapas de colisiones.
 
 
 
 // Funcion PA_LoadColisionMap();
-void PA_LoadColisionMap(const char* file, u8 id, u16 width, u16 height);
+void PA_LoadMap(const char* file, u8 id, u16 width, u16 height);
 // Carga un mapa de colisiones en el slot indicado.
 
 
 
 // Funcion PA_UnloadColisionMap();
-void PA_UnloadColisionMap(u8 id);
-// Borra de la RAM el mapa de colisiones con el nº de slot indicado.
+void PA_UnloadMap(u8 id);
+// Borra de la RAM el mapa de colisiones con el nÂº de slot indicado.
 
 
 
