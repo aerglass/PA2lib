@@ -17,3 +17,11 @@ Not yet lol
 <h2>Credits</h2>
 <strong>thanks to knightfox 75 for nightfox's lib for libnds</strong>
 Thanks to PipeWarp because of simpleNFL
+<h2>how to compile? </h2>
+download devkitpro (www.devkitpro.org/) </p>
+next download the repository </p>
+Here are 2 options, compile using the batch file, or with the cmd. <br>
+double click the makelib.bat file and let it do its work, if it doesn't compile
+then report it on github. <br>
+Using the cmd (terminal) go to the directory that is PA2LIB is located, enter to the
+pa2 folder, then type in "make clean" when it finishes, type "make" it will compile the lib.
