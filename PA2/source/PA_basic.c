@@ -118,7 +118,7 @@ void PA_Error(u16 code, const char* text, u32 value) {
 
 		case 114:	// La capa de Texto no existe
 			iprintf("Text layer on screen\n");
-			iprintf("nº %d don't exist.\n", (int)value);
+			iprintf("nÂº %d don't exist.\n", (int)value);
 			break;
 
 		case 115:	// Medidas del fondo no compatibles (no son multiplos de 256)
@@ -149,13 +149,13 @@ void PA_Error(u16 code, const char* text, u32 value) {
 			iprintf("on layers 2 or 3.\n");
 			break;
 
-		case 119:	// Tamaño de la textura ilegal.
+		case 119:	// TamaÃ±o de la textura ilegal.
 			iprintf("Texture id.%d illegal size.\n", (int)value);
 			iprintf("Only power of 2 sizes can\n");
 			iprintf("be used (8 to 1024).\n");
 			break;
 
-		case 120:	// Tamaño de la Sprite ilegal.
+		case 120:	// TamaÃ±o de la Sprite ilegal.
 			iprintf("Sprite id.%d illegal size.\n", (int)value);
 			iprintf("8x8 Sprites can't be used\n");
 			iprintf("in 1D_128 mode.\n");
@@ -175,7 +175,7 @@ void PA_Error(u16 code, const char* text, u32 value) {
 
 
 // Funcion PA_SetRootFolder();
-void PA_SetRootFolder(const char* folder) {
+void PA_SetRoot(const char* folder) {
 
 	if (strcmp(folder, "NITROFS") == 0) {	// Si se debe iniciar el modo NitroFS y FAT
 
@@ -214,7 +214,7 @@ void PA_SetRootFolder(const char* folder) {
 	} else {	// Si se debe iniciar solo la FAT
 
 		// Define la carpeta inicial de la FAT
-		sprintf(PA_ROOTFOLDER, "%s", folder);
+		sprintf(PA_ROOT, "%s", folder);
 		// Intenta inicializar la FAT
 		if (fatInitDefault()) {
 			// Si es correcto, cambia al ROOT del FAT
