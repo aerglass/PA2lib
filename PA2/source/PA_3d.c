@@ -20,7 +20,7 @@
 
 
 // Funcion PA_Set3D();
-void PA_Set3D(u8 screen, u8 mode) {
+void PA_Init3D(u8 screen, u8 mode) {
 
 	// Especifica en que pantalla estara el main engine (unico que puede usar 3D)
 	if (screen == 0) {
@@ -52,7 +52,7 @@ void PA_InitOpenGL(void) {
 	// Inicializa el OpenGL de Libnds
 	glInit();
 
-	// Define el tamaño de la ventana 3D (toda la pantalla)
+	// Define el tamaÃ±o de la ventana 3D (toda la pantalla)
 	glViewport(0, 0, 255, 191);
 
 	// CoPAigura la matriz de proyeccion
@@ -92,7 +92,7 @@ u16 PA_GetTextureSize(u16 textel) {
 	// Variables
 	u16 size = 0;
 
-	// Devuelve el tamaño del textel, segun su base2
+	// Devuelve el tamaÃ±o del textel, segun su base2
 	switch (textel) {
 		case 8:
 			size = 0;
