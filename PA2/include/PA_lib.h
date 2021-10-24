@@ -131,7 +131,7 @@ void SPA_unloadsprite(int screen, int ramslot, int vramslot) {
     // vram
     PA_FreeSpriteGfx(screen, vramslot);
 }
-void SPA_UpdateFlush() {
+void SPA_Flush() {
     PA_SpriteOamSet(1);
     oamUpdate(&oamSub);
 
