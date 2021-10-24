@@ -9,9 +9,8 @@ thus it can be incompatible with recent versions of libnds/devkitarm
   So i decided to make nightfox's lib way easier
   
   <h2>nice, but how do i install it?</h2>
-  installation requieres modifing the modifing the makefile and compile the lib.
-  Compile the lib (double click makelib.bat) and then drag and drop the Include and lib folder
-  it's nightfox's lib for libnds but more simple (instead of initiledbg is initbg)
+  Use the template lol. <br>
+  you also can compile the lib yourself, just double click the makelib.bat file
 <h2>Examples?</h2>
 Not yet lol
 <h2>Credits</h2>
@@ -25,3 +24,5 @@ double click the makelib.bat file and let it do its work, if it doesn't compile
 then report it on github. <br>
 Using the cmd (terminal) go to the directory that is PA2LIB is located, enter to the
 pa2 folder, then type in "make clean" when it finishes, type "make" it will compile the lib.
+<h1>Docs?</h1>
+github wiki exist, i will be adding things into it.
