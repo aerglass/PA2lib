@@ -1,13 +1,3 @@
-
-// NightFox LIB - Funciones de Colisiones
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
-// Includes devKitPro
 #include <nds.h>
 #include <filesystem.h>
 #include <fat.h>
