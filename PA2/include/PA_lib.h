@@ -131,12 +131,14 @@ void SPA_unloadsprite(int screen, int ramslot, int vramslot) {
     // vram
     PA_FreeSpriteGfx(screen, vramslot);
 }
-void SPA_UpdateOam() {
+void SPA_UpdateFlush() {
     PA_SpriteOamSet(1);
     oamUpdate(&oamSub);
 
     PA_SpriteOamSet(0);
     oamUpdate(&oamMain);
+    PA_UpdateTextLayers();
+    swiWaitForVBlank();
 }
     
 #endif
