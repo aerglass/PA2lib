@@ -104,9 +104,6 @@ b = (3 << 11);
 #include "PA_sprite3d.h"
 
 //do simplepalib things
-void SPA_SimpleText(cont char *print){
-iprintf(print);
-}
 void SPA_LoadSprite(int screen, int ramslot, int width, int height, const char *dir, const char *dir2, bool transflag) {
     PA_LoadSpriteGfx(dir, ramslot, width, height);
     NF_LoadSpritePal(dir2, ramslot);
