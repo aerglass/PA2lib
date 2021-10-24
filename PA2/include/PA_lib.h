@@ -104,17 +104,20 @@ b = (3 << 11);
 #include "PA_sprite3d.h"
 
 //do simplepalib things
-void SPA_loadbg(const char *dir, const char *name, int width, int height, int screen, int layer) {
+void SPA_LoadSprite(int screen, int ramslot, int width, int height, const char *dir, const char *dir2, bool transflag) {
+    NF_LoadSpriteGfx(dir, ramslot, width, height);
+    NF_LoadSpritePal(dir2, ramslot);
+    NF_VramSpriteGfx(screen, ramslot, ramslot, transflag);
+    NF_VramSpritePal(screen, ramslot, ramslot);
+}
+
+void SPA_LoadBackground(const char *dir, const char *name, int width, int height, int screen, int layer) {
     PA_LoadBg(dir, name, width, height);
     PA_CreateBg(screen, layer, name);
 }
 void SPA_unloadbg(int screen, int layer, const char *name) {
     PA_DeleteBg(screen, layer);
     PA_UnloadBg(name);
-}
-void SPA_loadfont(const char *file, const char *fontname, int width, int height, int rot, int screen, int layer) {
-    PA_LoadFont(file, fontname, width, height, rot);
-    PA_CreateTextLayer(screen, layer, rot, fontname);
 }
 // unload gfx and pallete in ram and vram
 void SPA_unloadsprite(int screen, int ramslot, int vramslot) {
@@ -132,8 +135,7 @@ void SPA_UpdateOam() {
     PA_SpriteOamSet(0);
     oamUpdate(&oamMain);
 }
-//WARNING, DO NOT USE THIS IF YOU DON'T WANT TO USE THE BOOTOM SCREEN
-
+    
 #endif
 
 #ifdef __cplusplus
