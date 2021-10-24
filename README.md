@@ -15,7 +15,6 @@ thus it can be incompatible with recent versions of libnds/devkitarm
 Not yet lol
 <h2>Credits</h2>
 <strong>thanks to knightfox 75 for nightfox's lib for libnds</strong>
-Thanks to PipeWarp because of simpleNFL
 <h2>how to compile? </h2>
 download devkitpro (www.devkitpro.org/) </p>
 next download the repository </p>
@@ -25,4 +24,7 @@ then report it on github. <br>
 Using the cmd (terminal) go to the directory that is PA2LIB is located, enter to the
 pa2 folder, then type in "make clean" when it finishes, type "make" it will compile the lib.
 <h1>Docs?</h1>
-github wiki exist, i will be adding things into it.
+github wiki exist, i will be adding things into it.</p>
+<h1> license </h1> </p>
+MIT license, you are free to do whatever you want with my software. <br>
+it doesn't matter to me if you sell it or make profit, you don't need to credit me. <br>
