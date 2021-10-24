@@ -1,13 +1,3 @@
-
-// NightFox LIB - Funciones basicas y de Debug
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 
-
-
-
-// Includes devKitPro
 #include <nds.h>
 #include <filesystem.h>
 #include <fat.h>
