@@ -104,7 +104,12 @@ b = (3 << 11);
 #include "PA_sprite3d.h"
 
 //do simplepalib things
-void SPA_LoadSprite(int screen, int ramslot, int width, int height, const char *dir, const char *dir2, bool transflag) {
+void SPA_WaitFor(int sec){
+        for (int i = 0; i < sec * 40000; i++){
+        printf(" ");
+        }
+}
+    void SPA_LoadSprite(int screen, int ramslot, int width, int height, const char *dir, const char *dir2, bool transflag) {
     PA_LoadSpriteGfx(dir, ramslot, width, height);
     PA_LoadSpritePal(dir2, ramslot);
     PA_VramSpriteGfx(screen, ramslot, ramslot, transflag);
