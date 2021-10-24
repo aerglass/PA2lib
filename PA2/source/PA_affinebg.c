@@ -1,13 +1,3 @@
-
-// NightFox LIB - Funciones de Fondos Affine
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
-// Includes devKitPro
 #include <nds.h>
 #include <filesystem.h>
 #include <fat.h>
@@ -35,7 +25,7 @@ PA_TYPE_AFFINE_BG PA_AFFINE_BG[2][4];
 
 
 // Funcion PA_InitTiledBgSys();
-void PA_InitAffineBgSys(u8 screen) {
+void PA_InitAffineBg(u8 screen) {
 
 	// Variables
 	u8 n = 0;
