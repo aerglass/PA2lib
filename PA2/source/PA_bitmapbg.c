@@ -1,13 +1,3 @@
-
-// NightFox LIB - Include de funciones de fondos en modo Bitmap
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
-// Includes devKitPro
 #include <nds.h>
 #include <filesystem.h>
 #include <fat.h>
@@ -232,18 +222,18 @@ void PA_Load16bImgData(const char* file, u8 slot, u16 x, u16 y, u8 type) {
 	// Variable para almacenar el path al archivo
 	char filename[256];
 
-	// Variable para el tamaño de archivo
+	// Variable para el tamaÃ±o de archivo
 	u32 size = 0;
 
 	// Carga el archivo .IMG
 	sprintf(filename, "%s/%s.img", PA_ROOTFOLDER, file);
 	file_id = fopen(filename, "rb");
 	if (file_id) {	// Si el archivo existe...
-		// Obten el tamaño del archivo
+		// Obten el tamaÃ±o del archivo
 		fseek(file_id, 0, SEEK_END);
 		size = ftell(file_id);
 		rewind(file_id);
-		// Si excede del tamaño maximo (128kb), error
+		// Si excede del tamaÃ±o maximo (128kb), error
 		if (size > 131072) PA_Error(116, filename, 131072);
 		// Reserva el espacio en RAM
 		PA_BG16B[slot].buffer = (u16*) calloc ((size >> 1), sizeof(u16));
@@ -264,7 +254,7 @@ void PA_Load16bImgData(const char* file, u8 slot, u16 x, u16 y, u8 type) {
 	}
 
 	// Guarda los parametros del fondo
-	PA_BG16B[slot].size = size;		// Guarda el tamaño
+	PA_BG16B[slot].size = size;		// Guarda el tamaÃ±o
 	PA_BG16B[slot].width = x;		// Ancho del fondo
 	PA_BG16B[slot].height = y;		// Altura del fondo
 	PA_BG16B[slot].inuse = true;	// Marca que esta en uso
@@ -283,7 +273,7 @@ void PA_Unload16bitsBg(u8 slot) {
 	free(PA_BG16B[slot].buffer);
 	PA_BG16B[slot].buffer = NULL;
 
-	PA_BG16B[slot].size = 0;		// Tamaño a 0
+	PA_BG16B[slot].size = 0;		// TamaÃ±o a 0
 	PA_BG16B[slot].inuse = false;	// Marca que esta libre
 
 }
@@ -416,18 +406,18 @@ void PA_Load8bitsBg(const char* file, u8 slot) {
 	// Variable para almacenar el path al archivo
 	char filename[256];
 
-	// Variable para el tamaño de archivo
+	// Variable para el tamaÃ±o de archivo
 	u32 size = 0;
 
 	// Carga el archivo .IMG
 	sprintf(filename, "%s/%s.img", PA_ROOTFOLDER, file);
 	file_id = fopen(filename, "rb");
 	if (file_id) {	// Si el archivo existe...
-		// Obten el tamaño del archivo
+		// Obten el tamaÃ±o del archivo
 		fseek(file_id, 0, SEEK_END);
 		size = ftell(file_id);
 		rewind(file_id);
-		// Si excede del tamaño maximo (64kb), error
+		// Si excede del tamaÃ±o maximo (64kb), error
 		if (size > 65536) PA_Error(116, filename, 65536);
 		// Reserva el espacio en RAM
 		PA_BG8B[slot].data = (u8*) calloc (size, sizeof(u8));
@@ -440,17 +430,17 @@ void PA_Load8bitsBg(const char* file, u8 slot) {
 		PA_Error(101, filename, 0);
 	}
 	fclose(file_id);		// Cierra el archivo
-	PA_BG8B[slot].data_size = size;		// Guarda el tamaño del buffer
+	PA_BG8B[slot].data_size = size;		// Guarda el tamaÃ±o del buffer
 
 	// Carga el archivo .PAL
 	sprintf(filename, "%s/%s.pal", PA_ROOTFOLDER, file);
 	file_id = fopen(filename, "rb");
 	if (file_id) {	// Si el archivo existe...
-		// Obten el tamaño del archivo
+		// Obten el tamaÃ±o del archivo
 		fseek(file_id, 0, SEEK_END);
 		size = ftell(file_id);
 		rewind(file_id);
-		// Si la paleta tiene un tamaño iPAerior a 512, ajusta el tamaño
+		// Si la paleta tiene un tamaÃ±o iPAerior a 512, ajusta el tamaÃ±o
 		if (size < 512) size = 512;
 		// Reserva el espacio en RAM
 		PA_BG8B[slot].pal = (u16*) calloc ((size >> 1), sizeof(u16));
@@ -463,7 +453,7 @@ void PA_Load8bitsBg(const char* file, u8 slot) {
 		PA_Error(101, filename, 0);
 	}
 	fclose(file_id);		// Cierra el archivo
-	PA_BG8B[slot].pal_size = size;		// Guarda el tamaño del buffer
+	PA_BG8B[slot].pal_size = size;		// Guarda el tamaÃ±o del buffer
 
 	// Marca el slot como que esta en uso
 	PA_BG8B[slot].inuse = true;
