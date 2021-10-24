@@ -106,9 +106,9 @@ b = (3 << 11);
 //do simplepalib things
 void SPA_LoadSprite(int screen, int ramslot, int width, int height, const char *dir, const char *dir2, bool transflag) {
     PA_LoadSpriteGfx(dir, ramslot, width, height);
-    NF_LoadSpritePal(dir2, ramslot);
-    NF_VramSpriteGfx(screen, ramslot, ramslot, transflag);
-    NF_VramSpritePal(screen, ramslot, ramslot);
+    PA_LoadSpritePal(dir2, ramslot);
+    PA_VramSpriteGfx(screen, ramslot, ramslot, transflag);
+    PA_VramSpritePal(screen, ramslot, ramslot);
 }
 
 void SPA_LoadBackground(const char *dir, const char *name, int width, int height, int screen, int layer) {
