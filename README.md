@@ -13,6 +13,7 @@ bad things:<br>
 You NEED to use hbmenu to launch your game via r4!!!<br>
 The library is in public beta prerelease, it is not stable<br>
 Installation is somewhat complex. <br>
+Simple PA2lib does not work with multifile proyect due to multiple definition errors.<br>
 <h2> why?</h2>
 Nightfox's lib for libnds isn't updated anymore.
 thus it can be incompatible with recent versions of libnds/devkitarm
