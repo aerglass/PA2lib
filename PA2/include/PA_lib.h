@@ -5,59 +5,6 @@ extern "C" {
 #ifndef __PA_LIB_H__
 #define __PA_LIB_H__
 
-
-
-
-
-// NightFox LIB - Include General
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
-/*
-
-Notas sobre BITSHIFT
-
-(n >> x)	Divide			n / x
-(n << x)	Multiplica		n * x
-
-Valores de X
-2	  =	1
-4	  =	2
-8	  =	3
-16	  =	4
-32	  =	5
-64	  =	6
-128	  =	7
-256	  =	8
-512	  =	9
-1024  =	10
-2048  =	11
-4096  =	12
-8192  =	13
-16384 =	14
-32768 =	15
-65536 =	16
-
-Dado que la DS no tiene unidad de coma flotante, siempre que dividas o
-multipliques por numeros de base 2, usa el bitshift
-Por ejemplo:
-a = (512 / 8);
-seria equivalente a
-a = (512 >> 3);
-Multiplicando
-b = (3 * 2048);
-seria con bitshift
-b = (3 << 11);
-
-*/
-
-
-
-
 // Definiciones comunes
 #include "PA_defines.h"
 
@@ -104,6 +51,17 @@ b = (3 << 11);
 #include "PA_sprite3d.h"
 
 //do simplepalib things
+void SPA_BasicSetup(){
+        PA_InitBgBuffers();
+        PA_InitBg(0);		
+        PA_InitBg(1);
+        
+        PA_InitSpriteBuffers();
+        PA_InitSprite(0);
+        PA_InitSprite(1);
+        PA_InitTextSys(0);
+        PA_InitTextSys(1);
+}
 void SPA_WaitFor(int sec){
         for (int i = 0; i < sec * 40000; i++){
         printf(" ");
