@@ -44,7 +44,7 @@ extern PA_TYPE_TEXT_IPAO PA_TEXT[2][4];		// Datos de las capas de texto
 
 
 // Funcion PA_InitTextSys();
-void PA_InitTextSys(u8 screen);
+void PA_InitText(u8 screen);
 // Inicializa el sistema de Texto para la pantalla dada
 
 
