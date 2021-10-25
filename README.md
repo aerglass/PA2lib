@@ -1,5 +1,18 @@
 # PA2lib
-Programmer's arsenal 2 (continuation of PALib and based on Nightfox's lib)
+Programmer's arsenal 2 (continuation of PALib and based on Nightfox's lib)</p>
+
+a very small, simple but powerful library<br>
+features:<br>
+Very easy to learn <br>
+text<br>
+sprites<br>
+backgrounds<br>
+3D Sprites <br>
+Sounds </p>
+bad things:<br>
+You NEED to use hbmenu to launch your game via r4!!!<br>
+The library is in public beta prerelease, it is not stable<br>
+Installation is somewhat complex. <br>
 <h2> why?</h2>
 Nightfox's lib for libnds isn't updated anymore.
 thus it can be incompatible with recent versions of libnds/devkitarm
