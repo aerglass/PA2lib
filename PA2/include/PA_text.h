@@ -24,7 +24,7 @@ extern "C" {
 
 
 
-// Define el nº de caracteres que tiene la fuente
+// Define el nÂº de caracteres que tiene la fuente
 #define PA_TEXT_FONT_CHARS 127
 #define PA_TEXT_FONT_LAST_VALID_CHAR 113
 
@@ -50,7 +50,7 @@ void PA_InitTextSys(u8 screen);
 
 
 // Funcion PA_LoadTextFont();
-void PA_LoadTextFont(const char* file, const char* name, u16 width, u16 height, u8 rotation);
+void PA_LoadFont(const char* file, const char* name, u16 width, u16 height, u8 rotation);
 // Carga una fuente para usar como texto
 // La fuente se cargara en un slot libre de fondos tileados
 // Debes especificar el archivos sin extension y un nombre para referenciarla
@@ -60,7 +60,7 @@ void PA_LoadTextFont(const char* file, const char* name, u16 width, u16 height, 
 
 
 // Funcion PA_UnloadTextFont();
-void PA_UnloadTextFont(const char* name);
+void PA_UnloadFont(const char* name);
 // Borra un fuente cargada en RAM
 // Esta funcion simplemente llama a PA_UnloadTiledBg(); para su borrado
 
@@ -80,7 +80,7 @@ void PA_DeleteTextLayer(u8 screen, u8 layer);
 
 
 // Funcion PA_WriteText();
-void PA_WriteText(u8 screen, u8 layer, u16 x, u16 y, const char* text);
+void PA_PrintText(u8 screen, u8 layer, u16 x, u16 y, const char* text);
 // Escribe un texto en el buffer de texto de la pantalla y capa seleccionada
 
 
