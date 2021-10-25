@@ -38,6 +38,8 @@ Using the cmd (terminal) go to the directory that is PA2LIB is located, enter to
 pa2 folder, then type in "make clean" when it finishes, type "make" it will compile the lib.
 <h1>Docs?</h1>
 github wiki exist, i will be adding things into it.</p>
+<h1> About updates </h1>
+This updates basically every day, every change made into something that ins't on the releases tab is not stable.
 <h1> license </h1> </p>
 MIT license, you are free to do whatever you want with my software. <br>
-it doesn't matter to me if you sell it or make profit, you don't need to credit me. <br>
+it doesn't matter to me if you sell it or make profit, you don't need to credit me.<br>
