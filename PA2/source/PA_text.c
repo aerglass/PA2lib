@@ -419,7 +419,7 @@ void PA_PrintText(u8 screen, u8 layer, u16 x, u16 y, const char* text) {
 		PA_UpdateTextLayers();
 		}
 	}
-
+}
 
 
 // Funcion PA_ClearTextLayer();
