@@ -50,6 +50,8 @@ extern "C" {
 // Libreria 3D, Sprites
 #include "PA_sprite3d.h"
 
+#include "spa.h"
+    
     
 #endif
 
