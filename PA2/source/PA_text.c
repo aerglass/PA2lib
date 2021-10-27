@@ -1,13 +1,3 @@
-
-// NightFox LIB - Funciones de Textos
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
-// Includes devKitPro
 #include <nds.h>
 #include <filesystem.h>
 #include <fat.h>
@@ -219,110 +209,6 @@ void PA_DeleteTextLayer(u8 screen, u8 layer) {
 	PA_TEXT[screen][layer].exist = false;
 
 }
-
-
-
-// Funcion PA_WriteText();
-void PA_PrintText(u8 screen, u8 layer, u16 x, u16 y, const char* text) {
-
-	// Verifica si la capa de texto de destino existe
-	if (!PA_TEXT[screen][layer].exist) {
-		PA_Error(114, NULL, screen);
-	}
-
-	u16 n = 0;					// Variable de uso general
-
-	s16 value = 0;				// Valor
-
-	u16 tsize = 0;				// Almacena el numero de letras
-	tsize = strlen(text);		// Calcula el numero de letras del texto
-
-	u8* string;					// Buffer temporal
-	string = NULL;
-	string = (u8*) calloc (tsize, sizeof(u8));
-
-	// Almacena en el buffer temporal el valor de los caracteres
-	for (n = 0; n < tsize; n ++) {
-		value = ((int)(text[n])) - 32;	// Resta 32 al valor entrado
-		if (value < 0) value = 0;
-		string[n] = value;
-		// Si es un caracter especial...
-		if (string[n] > 95) {
-			// Resetea el caracter...
-			string[n] = 0;
-			// Verifica caracteres especiales
-			switch (((int)(text[n]))) {
-				// Salto de linea
-				case 10:	// \n
-					string[n] = 200;
-					break;
-				// Caracteres especiales
-				case 199:	// �
-					string[n] = 96;
-					break;
-				case 231:	// �
-					string[n] = 97;
-					break;
-				case 209:	// �
-					string[n] = 98;
-					break;
-				case 241:	// �
-					string[n] = 99;
-					break;
-				// Acentos Mayusculas
-				case 193:	// �
-					string[n] = 100;
-					break;
-				case 201:	// �
-					string[n] = 101;
-					break;
-				case 205:	// �
-					string[n] = 102;
-					break;
-				case 211:	// �
-					string[n] = 103;
-					break;
-				case 218:	// �
-					string[n] = 104;
-					break;
-				// Acentos Minusculas
-				case 225:	// �
-					string[n] = 105;
-					break;
-				case 233:	// �
-					string[n] = 106;
-					break;
-				case 237:	// �
-					string[n] = 107;
-					break;
-				case 243:	// �
-					string[n] = 108;
-					break;
-				case 250:	// �
-					string[n] = 109;
-					break;
-				// Dieresis
-				case 239:	// �
-					string[n] = 110;
-					break;
-				case 252:	// �
-					string[n] = 111;
-					break;
-				// Admiracion e interrogante (Espa�ol)
-				case 161:	// �
-					string[n] = 112;
-					break;
-				case 191:	// �
-					string[n] = 113;
-					break;
-				// Caracter invalido
-				default:	
-					string[n] = 0;
-					break;
-			}
-		}
-	}
-
 	// Variable para calcular la posicion del texto
 	s16 tx = 0;		// X
 	s16 ty = 0;		// Y
@@ -432,6 +318,107 @@ void PA_UpdateTextLayers(void) {
 		}
 	}
 }
+// Funcion PA_WriteText();
+void PA_PrintText(u8 screen, u8 layer, u16 x, u16 y, const char* text) {
+
+	// Verifica si la capa de texto de destino existe
+	if (!PA_TEXT[screen][layer].exist) {
+		PA_Error(114, NULL, screen);
+	}
+
+	u16 n = 0;					// Variable de uso general
+
+	s16 value = 0;				// Valor
+
+	u16 tsize = 0;				// Almacena el numero de letras
+	tsize = strlen(text);		// Calcula el numero de letras del texto
+
+	u8* string;					// Buffer temporal
+	string = NULL;
+	string = (u8*) calloc (tsize, sizeof(u8));
+
+	// Almacena en el buffer temporal el valor de los caracteres
+	for (n = 0; n < tsize; n ++) {
+		value = ((int)(text[n])) - 32;	// Resta 32 al valor entrado
+		if (value < 0) value = 0;
+		string[n] = value;
+		// Si es un caracter especial...
+		if (string[n] > 95) {
+			// Resetea el caracter...
+			string[n] = 0;
+			// Verifica caracteres especiales
+			switch (((int)(text[n]))) {
+				// Salto de linea
+				case 10:	// \n
+					string[n] = 200;
+					break;
+				// Caracteres especiales
+				case 199:	// �
+					string[n] = 96;
+					break;
+				case 231:	// �
+					string[n] = 97;
+					break;
+				case 209:	// �
+					string[n] = 98;
+					break;
+				case 241:	// �
+					string[n] = 99;
+					break;
+				// Acentos Mayusculas
+				case 193:	// �
+					string[n] = 100;
+					break;
+				case 201:	// �
+					string[n] = 101;
+					break;
+				case 205:	// �
+					string[n] = 102;
+					break;
+				case 211:	// �
+					string[n] = 103;
+					break;
+				case 218:	// �
+					string[n] = 104;
+					break;
+				// Acentos Minusculas
+				case 225:	// �
+					string[n] = 105;
+					break;
+				case 233:	// �
+					string[n] = 106;
+					break;
+				case 237:	// �
+					string[n] = 107;
+					break;
+				case 243:	// �
+					string[n] = 108;
+					break;
+				case 250:	// �
+					string[n] = 109;
+					break;
+				// Dieresis
+				case 239:	// �
+					string[n] = 110;
+					break;
+				case 252:	// �
+					string[n] = 111;
+					break;
+				// Admiracion e interrogante (Espa�ol)
+				case 161:	// �
+					string[n] = 112;
+					break;
+				case 191:	// �
+					string[n] = 113;
+					break;
+				// Caracter invalido
+				default:	
+					string[n] = 0;
+					break;
+			}
+		PA_UpdateTextLayers();
+		}
+	}
 
 
 
