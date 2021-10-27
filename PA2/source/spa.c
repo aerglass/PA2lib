@@ -15,8 +15,8 @@ void SPA_BasicSetup(){
         PA_InitSpriteBuffers();
         PA_InitSprite(0);
         PA_InitSprite(1);
-        PA_InitTextSys(0);
-        PA_InitTextSys(1);
+        PA_InitText(0);
+        PA_InitText(1);
 }
 void SPA_WaitFor(int sec){
         for (int i = 0; i < sec * 40000; i++){
