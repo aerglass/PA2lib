@@ -44,7 +44,7 @@ void SPA_unloadsprite(int screen, int id) {
     PA_UnloadSpriteGfx(id);
     PA_UnloadSpritePal(id);
 
-    PA_FreeSpriteGfx(screen, vramslot);
+    PA_FreeSpriteGfx(screen, id);
 }
 void SPA_Flush() {
     PA_SpriteOamSet(1);
@@ -56,6 +56,6 @@ void SPA_Flush() {
     swiWaitForVBlank();
 }
 void SPA_PrintText(u8 screen, u8 layer, u16 x, u16 y, const char* text){
-        PA_PrintText(screen, layer, x, y, const char* text);
+        PA_PrintText(screen, layer, x, y, text);
         SPA_Flush();
         }
