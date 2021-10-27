@@ -15,7 +15,6 @@
 
 
 
-
 // Define los buffers para almacenar las capas de texto
 PA_TYPE_TEXT_IPAO PA_TEXT[2][4];
 
@@ -210,6 +209,8 @@ void PA_DeleteTextLayer(u8 screen, u8 layer) {
 
 }
 
+
+
 // Funcion PA_WriteText();
 void PA_PrintText(u8 screen, u8 layer, u16 x, u16 y, const char* text) {
 
@@ -310,7 +311,7 @@ void PA_PrintText(u8 screen, u8 layer, u16 x, u16 y, const char* text) {
 			}
 		}
 	}
-}
+
 	// Variable para calcular la posicion del texto
 	s16 tx = 0;		// X
 	s16 ty = 0;		// Y
@@ -420,6 +421,7 @@ void PA_UpdateTextLayers(void) {
 		}
 	}
 }
+
 
 
 // Funcion PA_ClearTextLayer();
