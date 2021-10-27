@@ -308,7 +308,6 @@ void PA_PrintText(u8 screen, u8 layer, u16 x, u16 y, const char* text) {
 					string[n] = 0;
 					break;
 			}
-		PA_UpdateTextLayers();
 		}
 	}
 }
