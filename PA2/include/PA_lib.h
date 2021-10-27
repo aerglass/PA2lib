@@ -50,56 +50,6 @@ extern "C" {
 // Libreria 3D, Sprites
 #include "PA_sprite3d.h"
 
-//do simplepalib things
-void SPA_BasicSetup(){
-        PA_InitBgBuffers();
-        PA_InitBg(0);		
-        PA_InitBg(1);
-        
-        PA_InitSpriteBuffers();
-        PA_InitSprite(0);
-        PA_InitSprite(1);
-        PA_InitTextSys(0);
-        PA_InitTextSys(1);
-}
-void SPA_WaitFor(int sec){
-        for (int i = 0; i < sec * 40000; i++){
-        printf(" ");
-        }
-}
-    void SPA_LoadSprite(int screen, int ramslot, int width, int height, const char *dir, const char *dir2, bool transflag) {
-    PA_LoadSpriteGfx(dir, ramslot, width, height);
-    PA_LoadSpritePal(dir2, ramslot);
-    PA_VramSpriteGfx(screen, ramslot, ramslot, transflag);
-    PA_VramSpritePal(screen, ramslot, ramslot);
-}
-
-void SPA_LoadBackground(const char *dir, const char *name, int width, int height, int screen, int layer) {
-    PA_LoadBg(dir, name, width, height);
-    PA_CreateBg(screen, layer, name);
-}
-void SPA_unloadbg(int screen, int layer, const char *name) {
-    PA_DeleteBg(screen, layer);
-    PA_UnloadBg(name);
-}
-// unload gfx and pallete in ram and vram
-void SPA_unloadsprite(int screen, int ramslot, int vramslot) {
-    // ram
-    PA_UnloadSpriteGfx(ramslot);
-    PA_UnloadSpritePal(ramslot);
-
-    // vram
-    PA_FreeSpriteGfx(screen, vramslot);
-}
-void SPA_Flush() {
-    PA_SpriteOamSet(1);
-    oamUpdate(&oamSub);
-
-    PA_SpriteOamSet(0);
-    oamUpdate(&oamMain);
-    PA_UpdateTextLayers();
-    swiWaitForVBlank();
-}
     
 #endif
 
