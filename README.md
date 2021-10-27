@@ -4,6 +4,7 @@ Programmer's arsenal 2 (continuation of PALib and based on Nightfox's lib)</p>
 a very small, simple but powerful library<br>
 features:<br>
 Very easy to learn <br>
+is less than a megabyte <br>
 text<br>
 sprites<br>
 backgrounds<br>
