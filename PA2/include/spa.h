@@ -16,7 +16,6 @@ void SPA_LoadBackground(const char *dir, const char *name, int width, int height
 void SPA_unloadbg(int screen, int layer, const char *name);
 void SPA_unloadsprite(int screen, int id);
 void SPA_Flush();
-void SPA_PrintText(u8 screen, u8 layer, u16 x, u16 y, const char* text);
 #endif
 
 #ifdef __cplusplus
