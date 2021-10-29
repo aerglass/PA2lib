@@ -8,6 +8,9 @@
 
 //do simplepalib things
 void SPA_BasicSetup(){
+        PA_Init2D(0, 0);
+        PA_Init2D(1, 0);
+        PA_SetRoot("NITROFS");
         PA_InitBgBuffers();
         PA_InitBg(0);		
         PA_InitBg(1);
@@ -55,7 +58,3 @@ void SPA_Flush() {
     PA_UpdateTextLayers();
     swiWaitForVBlank();
 }
-void SPA_PrintText(u8 screen, u8 layer, u16 x, u16 y, const char* text){
-        PA_PrintText(screen, layer, x, y, text);
-        SPA_Flush();
-        }
