@@ -2,8 +2,8 @@
 extern "C" {
 #endif
 
-#ifndef __PA_2D_H__
-#define __PA_2D_H__
+#ifndef __SPA_H__
+#define __SPA_H__
 
 // Includes devKitPro
 #include <nds.h>
