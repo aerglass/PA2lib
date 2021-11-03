@@ -10,6 +10,7 @@ extern "C" {
 #include <PA_lib.h>
   
 void SPA_BasicSetup();
+void SPA_Init();
 void SPA_WaitFor(int sec);
 void SPA_LoadSprite(int screen, int id, int width, int height, const char *dir, const char *dir2, bool transflag);
 void SPA_LoadBackground(const char *dir, const char *name, int width, int height, int screen, int layer);
