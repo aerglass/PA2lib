@@ -21,6 +21,23 @@ void SPA_BasicSetup(){
         PA_InitText(0);
         PA_InitText(1);
 }
+//do simplepalib things
+void SPA_Init(){
+        PA_Init2D(0, 0);
+        PA_Init2D(1, 0);
+        PA_SetRoot("NITROFS");
+        PA_InitBgBuffers();
+        PA_InitBg(0);		
+        PA_InitBg(1);
+        PA_InitSpriteBuffers();
+        PA_InitSprite(0);
+        PA_InitSprite(1);
+        PA_InitText(0);
+        PA_InitText(1);
+        PA_InitMapBuffers();
+        PA_InitSoundBuffers();
+}
+
 void SPA_WaitFor(int sec){
         for (int i = 0; i < sec * 40000; i++){
         printf(" ");
