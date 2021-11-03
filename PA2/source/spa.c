@@ -43,9 +43,9 @@ void SPA_WaitFor(int sec){
         printf(" ");
         }
 }
-    void SPA_LoadSprite(int screen, int id, int width, int height, const char *dir, const char *dir2, bool transflag) {
+    void SPA_LoadSprite(int screen, int id, int width, int height, const char *dir, bool transflag) {
     PA_LoadSpriteGfx(dir, id, width, height);
-    PA_LoadSpritePal(dir2, id);
+    PA_LoadSpritePal(dir, id);
     PA_VramSpriteGfx(screen, id, id, transflag);
     PA_VramSpritePal(screen, id, id);
 }
