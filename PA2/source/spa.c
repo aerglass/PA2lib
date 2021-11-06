@@ -75,3 +75,12 @@ void SPA_Flush() {
     PA_UpdateTextLayers();
     swiWaitForVBlank();
 }
+void SPA_SetSpriteX(int screen, int id, float x){
+PA_MoveSprite(scren, id, x, false);
+}
+void SPA_SetSpriteY(int screen, int id, float y){
+        PA_MoveSprite(screen, id, false ,y); 
+}
+void SPA_SetSpriteXY(int screen, int id, float x, float y){
+        PA_MoveSprite(screen, id, x, y);
+}
