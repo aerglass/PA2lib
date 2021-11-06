@@ -5,24 +5,8 @@ extern "C" {
 #ifndef __PA_2D_H__
 #define __PA_2D_H__
 
-
-
-
-
-// NightFox LIB - Include de funciones 2D comunes
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
 // Includes devKitPro
 #include <nds.h>
-
-
-
-
 
 // Funcion PA_Set2D();
 void PA_Init2D(u8 screen, u8 mode);
@@ -127,10 +111,6 @@ void PA_SpriteRotScale(u8 screen, u8 id, s16 angle, u16 sx, u16 sy);
 // Define el angulo de rotacion y escala de los Sprites asociados a la Id.
 // El rango del angulo es desde -512 a 512, siendo 0 el valor central
 // El rango de escalado va de 0 a 512, siendo 256 el valor normal (100%)
-
-
-
-
 
 #endif
 
