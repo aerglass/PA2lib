@@ -9,7 +9,7 @@ Enjoy making games
 
 //main block of the program.
 int main(int argc, char **argv) {
-	consoleDemoInit();			// Inicializa la consola de texto
+	consoleDemoInit();			// Inits text of the console
 	consoleClear();				// Clear
 	setBrightness(3, 0);			// put brightness to 3.
 	
