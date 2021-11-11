@@ -20,7 +20,8 @@ void SPA_Flush();
 void SPA_SetSpriteX(int screen, int id, float x);
 void SPA_SetSpriteY(int screen, int id, float y);
 void SPA_SetSpriteXY(int screen, int id, float x, float y);
-#endif
+void SPA_AnimateSprite(int screen, int id, int speed, int frame, int last_frame, int variable)'
+  #endif
 
 #ifdef __cplusplus
 }
