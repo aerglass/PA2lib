@@ -37,7 +37,6 @@ void SPA_Init(){
         PA_InitMapBuffers();
         PA_InitSoundBuffers();
 }
-
 void SPA_WaitFor(int sec){
         for (int i = 0; i < sec * 40000; i++){
         printf(" ");
@@ -83,4 +82,13 @@ void SPA_SetSpriteY(int screen, int id, float y){
 }
 void SPA_SetSpriteXY(int screen, int id, float x, float y){
         PA_MoveSprite(screen, id, x, y);
+}
+void SPA_AnimateSprite(int screen, int id, int speed, int frame, int last_frame, int variable){
+        variable ++;
+        if(variable > speed){
+                variable = 0;
+                PA_SetSpriteFrame(screen, id, frame);
+                frame ++;
+        }
+        if(frame >= last_frame) frame = 0;
 }
