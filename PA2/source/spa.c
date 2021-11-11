@@ -75,7 +75,7 @@ void SPA_Flush() {
     swiWaitForVBlank();
 }
 void SPA_SetSpriteX(int screen, int id, float x){
-PA_MoveSprite(scren, id, x, false);
+PA_MoveSprite(screen, id, x, false);
 }
 void SPA_SetSpriteY(int screen, int id, float y){
         PA_MoveSprite(screen, id, false ,y); 
