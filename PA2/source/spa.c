@@ -87,7 +87,7 @@ void SPA_AnimateSprite(int screen, int id, int speed, int frame, int last_frame,
         variable ++;
         if(variable > speed){
                 variable = 0;
-                PA_SetSpriteFrame(screen, id, frame);
+                PA_SpriteFrame(screen, id, frame);
                 frame ++;
         }
         if(frame >= last_frame) frame = 0;
