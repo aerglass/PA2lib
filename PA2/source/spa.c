@@ -7,21 +7,6 @@
 #include <PA_lib.h>
 
 //do simplepalib things
-void SPA_BasicSetup(){
-        PA_Init2D(0, 0);
-        PA_Init2D(1, 0);
-        PA_SetRoot("NITROFS");
-        PA_InitBgBuffers();
-        PA_InitBg(0);		
-        PA_InitBg(1);
-        
-        PA_InitSpriteBuffers();
-        PA_InitSprite(0);
-        PA_InitSprite(1);
-        PA_InitText(0);
-        PA_InitText(1);
-}
-//do simplepalib things
 void SPA_Init(){
         PA_Init2D(0, 0);
         PA_Init2D(1, 0);
@@ -83,12 +68,7 @@ void SPA_SetSpriteY(int screen, int id, float y){
 void SPA_SetSpriteXY(int screen, int id, float x, float y){
         PA_MoveSprite(screen, id, x, y);
 }
-void SPA_AnimateSprite(int screen, int id, int speed, int frame, int last_frame, int variable){
-        variable ++;
-        if(variable > speed){
-                variable = 0;
-                PA_SpriteFrame(screen, id, frame);
-                frame ++;
-        }
-        if(frame >= last_frame) frame = 0;
+void SPA_FlipSprite(int screen, int id, int hflip, int vflip){
+        PA_HflipSprite(screen, id, hflip);
+        PA_VflipSprite(screen, id, vflip);
 }
