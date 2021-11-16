@@ -9,6 +9,7 @@ text<br>
 sprites<br>
 backgrounds<br>
 3D Sprites <br>
+Functions for time delay or anything else <br>
 Sounds </p>
 bad things:<br>
 You NEED to use hbmenu to launch your game via r4!!!<br>
