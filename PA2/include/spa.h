@@ -9,7 +9,6 @@ extern "C" {
 #include <nds.h>
 #include <PA_lib.h>
   
-void SPA_BasicSetup();
 void SPA_Init();
 void SPA_WaitFor(int sec);
 void SPA_LoadSprite(int screen, int id, int width, int height, const char *dir, bool transflag);
@@ -20,7 +19,6 @@ void SPA_Flush();
 void SPA_SetSpriteX(int screen, int id, float x);
 void SPA_SetSpriteY(int screen, int id, float y);
 void SPA_SetSpriteXY(int screen, int id, float x, float y);
-void SPA_AnimateSprite(int screen, int id, int speed, int frame, int last_frame, int variable);
   #endif
 
 #ifdef __cplusplus
