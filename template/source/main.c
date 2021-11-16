@@ -9,9 +9,7 @@ Enjoy making games
 
 //main block of the program.
 int main(int argc, char **argv) {
-	consoleDemoInit();			// Inits text of the console
-	consoleClear();				// Clear
-	setBrightness(3, 0);			// put brightness to 3.
+	SPA_Init();				//inits everything
 	
 	iprintf("\n Hello World!"); 		//print hello world
 	//loop for ever.
