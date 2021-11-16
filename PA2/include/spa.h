@@ -19,6 +19,7 @@ void SPA_Flush();
 void SPA_SetSpriteX(int screen, int id, float x);
 void SPA_SetSpriteY(int screen, int id, float y);
 void SPA_SetSpriteXY(int screen, int id, float x, float y);
+void SPA_FlipSprite(int screen, int id, int hflip, int vflip);
   #endif
 
 #ifdef __cplusplus
