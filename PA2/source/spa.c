@@ -8,6 +8,10 @@
 
 //do simplepalib things
 void SPA_Init(){
+        consoleDemoInit();
+        consoleClear();
+        setBrightness(3,0);
+        
         PA_Init2D(0, 0);
         PA_Init2D(1, 0);
         PA_SetRoot("NITROFS");
