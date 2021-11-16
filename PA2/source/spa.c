@@ -28,7 +28,7 @@ void SPA_Init(){
 }
 void SPA_WaitFor(int sec){
         for (int i = 0; i < sec * 40000; i++){
-        printf(" ");
+        swiWaitForVBlank();
         }
 }
     void SPA_LoadSprite(int screen, int id, int width, int height, const char *dir, bool transflag) {
