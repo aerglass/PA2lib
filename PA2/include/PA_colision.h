@@ -5,25 +5,8 @@ extern "C" {
 #ifndef __PA_COLISION_H__
 #define __PA_COLISION_H__
 
-
-
-
-
-// NightFox LIB - Include de Colisiones
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
-
-
 // Includes devKitPro
 #include <nds.h>
-
-
-
 
 
 // Define los slots maximos para los mapas de colisiones
@@ -98,10 +81,6 @@ void PA_UnloadColisionBg(u8 id);
 // Funcion PA_GetPoint();
 extern u8 PA_GetPoint(u8 slot, s32 x, s32 y);
 // Obten el color del pixel de las coordenadas dadas
-
-
-
-
 
 #endif
 
