@@ -1,14 +1,3 @@
-
-// NightFox LIB - Funciones de Sprites a 256 colores
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
-
-
 // Includes devKitPro
 #include <nds.h>
 #include <filesystem.h>
@@ -24,8 +13,6 @@
 #include "PA_basic.h"
 #include "PA_2d.h"
 #include "PA_sprite256.h"
-
-
 
 // Define los Buffers para almacenar los Sprites
 char* PA_BUFFER_SPR256GFX[PA_SLOTS_SPR256GFX];
@@ -46,9 +33,6 @@ PA_TYPE_SPRITEOAM_IPAO PA_SPRITEOAM[2][128];		// 2 pantallas, 128 sprites
 
 // Define la esturctura de control de la VRAM para Sprites
 PA_TYPE_SPRVRAM_IPAO PA_SPRVRAM[2];		// IPAormacion VRAM de Sprites en ambas pantallas
-
-
-
 
 
 // Funcion PA_InitSpriteBuffers()
@@ -639,8 +623,6 @@ void PA_VramSpriteGfxDefrag(u8 screen) {
 	buffer = NULL;
 
 }
-
-
 
 // Funcion PA_VramSpritePal();
 void PA_VramSpritePal(u8 screen, u8 id, u8 slot) {
