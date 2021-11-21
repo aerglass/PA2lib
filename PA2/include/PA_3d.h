@@ -5,23 +5,8 @@ extern "C" {
 #ifndef __PA_3D_H__
 #define __PA_3D_H__
 
-
-
-
-
-// NightFox LIB - Include de funciones 3D
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
 // Includes devKitPro
 #include <nds.h>
-
-
-
 
 
 // Funcion PA_Set3D();
@@ -37,10 +22,7 @@ void PA_InitOpenGL(void);
 
 // Funcion PA_GetTextureSize();
 extern u16 PA_GetTextureSize(u16 textel);
-// Devuelve el tamaño del textel
-
-
-
+// Devuelve el tamaÃ±o del textel
 
 
 #endif
