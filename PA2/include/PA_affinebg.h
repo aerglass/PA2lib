@@ -5,25 +5,8 @@ extern "C" {
 #ifndef __PA_AFFINEBG_H__
 #define __PA_AFFINEBG_H__
 
-
-
-
-
-// NightFox LIB - Includes de Fondos Affine
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
-
-
 // Includes devKitPro
 #include <nds.h>
-
-
-
 
 
 // Estructura para almacenar los parametros de los fondos Affine
@@ -94,10 +77,6 @@ void PA_AffineBgMove(u8 screen, u8 layer, s32 x, s32 y, s32 angle);
 // Funcion PA_AffineBgCenter();
 void PA_AffineBgCenter(u8 screen, u8 layer, s32 x, s32 y);
 // Define el centro de rotacion de un fondo affine
-
-
-
-
 
 #endif
 
