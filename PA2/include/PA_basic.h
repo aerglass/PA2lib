@@ -6,23 +6,8 @@ extern "C" {
 #define __PA_BASIC_H__
 
 
-
-
-
-// NightFox LIB - Include de funciones basicas
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
 // Includes devKitPro
 #include <nds.h>
-
-
-
-
 
 // Define la variable global PA_ROOTFOLDER
 extern char PA_ROOTFOLDER[32];
@@ -77,10 +62,6 @@ extern u8 PA_GetLanguage(void);
 // 4 : Italian
 // 5 : Spanish
 // 6 : Chinese
-
-
-
-
 
 #endif
 
