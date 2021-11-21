@@ -27,7 +27,8 @@ void SPA_Init(){
         PA_InitSoundBuffers();
 }
 void SPA_WaitFor(int sec){
-        for (int i = 0; i < sec * 40000; i++){
+        int i = 0;
+        for (i = 0; i < sec * 100; i++){
         swiWaitForVBlank();
         }
 }
