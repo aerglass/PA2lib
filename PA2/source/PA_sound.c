@@ -1,14 +1,3 @@
-
-// NightFox LIB - Funciones de de funciones de sonido
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
-
-
 // Includes devKitPro
 #include <nds.h>
 #include <filesystem.h>
@@ -23,19 +12,11 @@
 #include "PA_basic.h"
 #include "PA_sound.h"
 
-
-
-
-
 // Define los Buffers para almacenar los archivos de audio
 char* PA_BUFFER_RAWSOUND[PA_SLOTS_RAWSOUND];
 
 // Datos de los sonidos cargado
 PA_TYPE_RAWSOUND_IPAO PA_RAWSOUND[PA_SLOTS_RAWSOUND];
-
-
-
-
 
 // Funcion PA_InitRawSoundBuffers();
 void PA_InitSoundBuffers(void) {
@@ -46,16 +27,12 @@ void PA_InitSoundBuffers(void) {
 	for (n = 0; n < PA_SLOTS_RAWSOUND; n ++) {
 		PA_BUFFER_RAWSOUND[n] = NULL;			// Inicializa puntero
 		PA_RAWSOUND[n].available = true;		// Disponibilidad del slot
-		PA_RAWSOUND[n].size = 0;				// Tamaño del archivo
+		PA_RAWSOUND[n].size = 0;				// TamaÃ±o del archivo
 		PA_RAWSOUND[n].freq = 0;				// Frecuencia del sample
 		PA_RAWSOUND[n].format = 0;				// Formato del sample
 	}
 
 }
-
-
-
-
 
 // Funcion PA_ResetRawSoundBuffers();
 void PA_ResetSoundBuffers(void) {
@@ -71,10 +48,6 @@ void PA_ResetSoundBuffers(void) {
 	PA_InitSoundBuffers();
 
 }
-
-
-
-
 
 // Funcion PA_LoadRawSound();
 void PA_LoadSound(const char* file, u16 id,  u16 freq, u8 format) {
@@ -103,11 +76,11 @@ void PA_LoadSound(const char* file, u16 id,  u16 freq, u8 format) {
 	sprintf(filename, "%s/%s.raw", PA_ROOTFOLDER, file);
 	file_id = fopen(filename, "rb");
 	if (file_id) {	// Si el archivo existe...
-		// Obten el tamaño del archivo
+		// Obten el tamaÃ±o del archivo
 		fseek(file_id, 0, SEEK_END);
 		PA_RAWSOUND[id].size = ftell(file_id);
 		rewind(file_id);
-		// Si excede del tamaño maximo, error
+		// Si excede del tamaÃ±o maximo, error
 		if (PA_RAWSOUND[id].size > (1 << 18)) PA_Error(116, filename, (1 << 18));
 		// Reserva el espacio en RAM
 		PA_BUFFER_RAWSOUND[id] = (char*) calloc (PA_RAWSOUND[id].size, sizeof(char));
@@ -131,10 +104,6 @@ void PA_LoadSound(const char* file, u16 id,  u16 freq, u8 format) {
 
 }
 
-
-
-
-
 // Funcion UnloadRawSound();
 void PA_UnloadSound(u8 id) {
 
@@ -156,11 +125,6 @@ void PA_UnloadSound(u8 id) {
 	PA_RAWSOUND[id].available = true;
 
 }
-
-
-
-
-
 // Funcion PA_PlayRawSound();
 u8 PA_PlaySound(u8 id, u8 volume, u8 pan, bool loop, u16 loopfrom) {
 
