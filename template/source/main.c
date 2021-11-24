@@ -10,8 +10,7 @@ Enjoy making games
 //main block of the program.
 int main(int argc, char **argv) {
 	SPA_Init();				//inits everything
-	
-	iprintf("\n Hello World!"); 		//print hello world
+	SPA_LoadBackground("PA2lib", "bg", 256, 256, 0, 3); //load and display background
 	//loop for ever.
 	while(1) {
 		scanKeys();			//scan keys
