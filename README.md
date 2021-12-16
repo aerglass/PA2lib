@@ -10,7 +10,7 @@ sprites<br>
 backgrounds<br>
 3D Sprites <br>
 Functions for time delay or anything else <br>
-Sounds </p>
+Sounds (not music, use MaxMod for that)</p>
 bad things:<br>
 You NEED to use hbmenu to launch your game via r4!!!<br>
 The library is in public beta prerelease, it is not stable<br>
