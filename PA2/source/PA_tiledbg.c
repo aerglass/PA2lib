@@ -1,14 +1,3 @@
-
-// NightFox LIB - Funciones de Fondos con tiles
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
-
-
 // Includes devKitPro
 #include <nds.h>
 #include <filesystem.h>
@@ -23,8 +12,6 @@
 #include "PA_basic.h"
 #include "PA_2d.h"
 #include "PA_tiledbg.h"
-
-
 
 // Define los bancos de Mapas y Tiles
 u8 PA_BANKS_TILES[2];	// (1 banks = 16kb)	Cada banco de tiles puede alvergar 8 bancos de Mapas
@@ -45,8 +32,6 @@ PA_TYPE_EXBGPAL_IPAO PA_EXBGPAL[PA_SLOTS_EXBGPAL];	// Datos de las paletas exten
 // Define el array de bloques libres
 u8 PA_TILEBLOCKS[2][PA_MAX_BANKS_TILES];
 u8 PA_MAPBLOCKS[2][PA_MAX_BANKS_MAPS];
-
-
 
 // Funcion PA_InitTiledBgBuffers();
 void PA_InitBgBuffers(void) {
@@ -73,8 +58,6 @@ void PA_InitBgBuffers(void) {
 
 }
 
-
-
 // Funcion PA_ResetTiledBgBuffers();
 void PA_ResetTiledBgBuffers(void) {
 	u8 n = 0;
@@ -88,8 +71,6 @@ void PA_ResetTiledBgBuffers(void) {
 	}
 	PA_InitBgBuffers();				// Reinicia el resto de variables
 }
-
-
 
 // Funcion PA_InitTiledBgSys();
 void PA_InitBg(u8 screen) {
@@ -162,8 +143,6 @@ void PA_InitBg(u8 screen) {
 	}
 
 }
-
-
 
 // Funcion PA_LoadTiledBg();
 void PA_LoadBg(const char* file, const char* name, u16 width, u16 height) {
@@ -276,8 +255,6 @@ void PA_LoadBg(const char* file, const char* name, u16 width, u16 height) {
 	PA_TILEDBG[slot].height = height;
 
 }
-
-
 
 // Funcion PA_LoadTilesForBg();
 void PA_LoadTilesForBg(const char* file, const char* name, u16 width, u16 height, u16 tile_start, u16 tile_end) {
@@ -392,8 +369,6 @@ void PA_LoadTilesForBg(const char* file, const char* name, u16 width, u16 height
 	PA_TILEDBG[slot].height = height;
 
 }
-
-
 
 // Funcion PA_UnloadTiledBg();
 void PA_UnloadBg(const char* name) {
@@ -712,8 +687,6 @@ void PA_CreateBg(u8 screen, u8 layer, const char* name) {
 
 }
 
-
-
 // Funcion PA_DeleteTiledBg();
 void PA_DeleteBg(u8 screen, u8 layer) {
 
@@ -803,8 +776,6 @@ void PA_DeleteBg(u8 screen, u8 layer) {
 
 }
 
-
-
 // Funcion PA_GetTileMapAddress();
 u32 PA_GetTileMapAddress(u8 screen, u8 layer, u16 tile_x, u16 tile_y) {
 
@@ -839,8 +810,6 @@ u32 PA_GetTileMapAddress(u8 screen, u8 layer, u16 tile_x, u16 tile_y) {
 
 }
 
-
-
 // Funcion PA_GetTileOfMap();
 u16 PA_GetTileOfMap(u8 screen, u8 layer, u16 tile_x, u16 tile_y) {
 
@@ -855,8 +824,6 @@ u16 PA_GetTileOfMap(u8 screen, u8 layer, u16 tile_x, u16 tile_y) {
 	return ((hibyte << 8) | lobyte);
 
 }
-
-
 
 // Funcion PA_SetTileOfMap();
 void PA_SetTileOfMap(u8 screen, u8 layer, u16 tile_x, u16 tile_y, u16 tile) {
@@ -873,8 +840,6 @@ void PA_SetTileOfMap(u8 screen, u8 layer, u16 tile_x, u16 tile_y, u16 tile) {
 	*(PA_BUFFER_BGMAP[PA_TILEDBG_LAYERS[screen][layer].bgslot] + (address + 1)) = hibyte;
 
 }
-
-
 
 // Funcion PA_UpdateVramMap();
 void PA_UpdateVramMap(u8 screen, u8 layer) {
@@ -939,8 +904,6 @@ void PA_UpdateVramMap(u8 screen, u8 layer) {
 }
 
 
-
-
 // Funcion PA_BgSetPalColor();
 void PA_BgSetPalColor(u8 screen, u8 layer, u8 number, u8 r, u8 g, u8 b) {
 
@@ -975,8 +938,6 @@ void PA_BgSetPalColor(u8 screen, u8 layer, u8 number, u8 r, u8 g, u8 b) {
 
 }
 
-
-
 // Funcion PA_BgEditPalColor();
 void PA_BgEditPalColor(u8 screen, u8 layer, u8 number, u8 r, u8 g, u8 b) {
 
@@ -999,8 +960,6 @@ void PA_BgEditPalColor(u8 screen, u8 layer, u8 number, u8 r, u8 g, u8 b) {
 	*(PA_BUFFER_BGPAL[PA_TILEDBG_LAYERS[screen][layer].bgslot] + ((number << 1) + 1)) = hibyte;
 
 }
-
-
 
 // Funcion 	PA_BgUpdatePalette();
 void PA_BgUpdatePalette(u8 screen, u8 layer) {
@@ -1037,8 +996,6 @@ void PA_BgUpdatePalette(u8 screen, u8 layer) {
 
 }
 
-
-
 // Funcion PA_BgGetPalColor();
 void PA_BgGetPalColor(u8 screen, u8 layer, u8 number, u8* r, u8* g, u8* b) {
 
@@ -1063,8 +1020,6 @@ void PA_BgGetPalColor(u8 screen, u8 layer, u8 number, u8* r, u8* g, u8* b) {
 
 }
 
-
-
 // Funcion PA_GetTilePal();
 u8 PA_GetTilePal(u8 screen, u8 layer, u16 tile_x, u16 tile_y) {
 
@@ -1078,8 +1033,6 @@ u8 PA_GetTilePal(u8 screen, u8 layer, u16 tile_x, u16 tile_y) {
 	return ((hibyte >> 4) & 0x0F);
 
 }
-
-
 
 // Funcion PA_SetTilePal();
 void PA_SetTilePal(u8 screen, u8 layer, u16 tile_x, u16 tile_y, u8 pal) {
@@ -1097,8 +1050,6 @@ void PA_SetTilePal(u8 screen, u8 layer, u16 tile_x, u16 tile_y, u8 pal) {
 	*(PA_BUFFER_BGMAP[PA_TILEDBG_LAYERS[screen][layer].bgslot] + (address + 1)) = ((pal << 4) | data);
 
 }
-
-
 
 // Funcion PA_LoadExBgPal();
 void PA_LoadExBgPal(const char* file, u8 slot) {
@@ -1149,8 +1100,6 @@ void PA_LoadExBgPal(const char* file, u8 slot) {
 
 }
 
-
-
 // Funcion PA_UnloadExBgPal();
 void PA_UnloadExBgPal(u8 slot) {
 
@@ -1175,8 +1124,6 @@ void PA_UnloadExBgPal(u8 slot) {
 	PA_EXBGPAL[slot].inuse = false;
 
 }
-
-
 
 // Funcion PA_VramExBgPal();
 void PA_VramExBgPal(u8 screen, u8 layer, u8 id, u8 slot) {
@@ -1206,8 +1153,6 @@ void PA_VramExBgPal(u8 screen, u8 layer, u8 id, u8 slot) {
 	}
 
 }
-
-
 
 // Funcion PA_SetExBgPal();
 void PA_SetExBgPal(u8 screen, u8 layer, u8 pal) {
@@ -1245,8 +1190,6 @@ void PA_SetExBgPal(u8 screen, u8 layer, u8 pal) {
 
 }
 
-
-
 // Funcion PA_SetTileHflip();
 void PA_SetTileHflip(u8 screen, u8 layer, u16 tile_x, u16 tile_y) {
 
@@ -1264,8 +1207,6 @@ void PA_SetTileHflip(u8 screen, u8 layer, u16 tile_x, u16 tile_y) {
 
 }
 
-
-
 // Funcion PA_SetTileVflip();
 void PA_SetTileVflip(u8 screen, u8 layer, u16 tile_x, u16 tile_y) {
 
@@ -1282,10 +1223,6 @@ void PA_SetTileVflip(u8 screen, u8 layer, u16 tile_x, u16 tile_y) {
 	*(PA_BUFFER_BGMAP[PA_TILEDBG_LAYERS[screen][layer].bgslot] + (address + 1)) = hibyte;
 
 }
-
-
-
-
 
 // Funcion PA_RotateTileGfx();
 void PA_RotateTileGfx(u8 slot, u16 tile, u8 rotation) {
@@ -1372,7 +1309,6 @@ void PA_RotateTileGfx(u8 slot, u16 tile, u8 rotation) {
 			break;
 
 	}
-	
 	// Copia el tile desde buffer temporal B
 	memcpy((PA_BUFFER_BGTILES[slot] + (tile << 6)), character_b, 64);
 
