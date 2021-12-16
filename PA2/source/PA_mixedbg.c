@@ -1,14 +1,3 @@
-
-// NightFox LIB - Include de Fondos mixtos (Tiled / Bitmap 8 bits)
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
-
-
 // Includes devKitPro
 #include <nds.h>
 #include <filesystem.h>
@@ -25,10 +14,6 @@
 #include "PA_tiledbg.h"
 #include "PA_bitmapbg.h"
 #include "PA_mixedbg.h"
-
-
-
-
 
 // Funcion PA_InitMixedBgSys();
 void PA_InitMixedBgSys(u8 screen) {
