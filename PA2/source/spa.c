@@ -39,9 +39,9 @@ void SPA_WaitFor(int sec){
     PA_VramSpritePal(screen, id, id);
 }
 
-void SPA_LoadBackground(const char *dir, const char *name, int width, int height, int screen, int layer) {
+void SPA_LoadBackground(const char *dir, int width, int height, int screen, int layer) {
     PA_LoadBg(dir, name, width, height);
-    PA_CreateBg(screen, layer, name);
+    PA_CreateBg(screen, layer, dir);
 }
 void SPA_unloadbg(int screen, int layer, const char *name) {
     PA_DeleteBg(screen, layer);
