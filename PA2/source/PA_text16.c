@@ -1,12 +1,3 @@
-
-// NightFox LIB - Funciones de Textos de 16 pixeles
-// Requiere DevkitARM
-// Codigo por Cesar Rincon "NightFox"
-// http://www.nightfoxandco.com/
-// Version 20140413
-
-
-
 // Includes devKitPro
 #include <nds.h>
 #include <filesystem.h>
@@ -23,10 +14,6 @@
 #include "PA_tiledbg.h"
 #include "PA_text.h"
 #include "PA_text16.h"
-
-
-
-
 
 // Funcion PA_LoadTextFont16();
 void PA_LoadFont16(const char* file, const char* name, u16 width, u16 height, u8 rotation) {
@@ -136,10 +123,6 @@ void PA_LoadFont16(const char* file, const char* name, u16 width, u16 height, u8
 
 }
 
-
-
-
-
 // Funcion PA_CreateTextLayer16();
 void PA_CreateTextLayer16(u8 screen, u8 layer, u8 rotation, const char* name) {
 
@@ -185,10 +168,6 @@ void PA_CreateTextLayer16(u8 screen, u8 layer, u8 rotation, const char* name) {
 	PA_TEXT[screen][layer].exist = true;
 
 }
-
-
-
-
 
 // Funcion PA_WriteText16();
 void PA_Print16(u8 screen, u8 layer, u16 x, u16 y, const char* text) {
@@ -394,10 +373,6 @@ void PA_Print16(u8 screen, u8 layer, u16 x, u16 y, const char* text) {
 	free(string);
 
 }
-
-
-
-
 
 // Funcion PA_ClearTextLayer16();
 void PA_ClearTextLayer16(u8 screen, u8 layer) {
