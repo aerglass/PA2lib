@@ -46,5 +46,4 @@ This updates basically every day, every change made into something that ins't on
 <h1> how to update? </h1><br>
   delete the existing PA2 folder from you proyect. Then download the latest stable release (you can use the unstabe builds but they are unstable lol) and then drag the pa2 folder from the template, now you are done
 <h1> license </h1> </p>
-MIT license, you are free to do whatever you want with my software. <br>
-it doesn't matter to me if you sell it or make profit, you don't need to credit me.<br>
+creative commons. But if you break the rules then i don't care, i just putted that licence due to nflib's license.
