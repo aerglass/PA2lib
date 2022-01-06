@@ -39,16 +39,16 @@ void SPA_WaitFor(int sec){
     PA_VramSpritePal(screen, id, id); //loads sprite pal on VRAM
 }
 
-void SPA_LoadBackground(const char *dir, int width, int height, int screen, int layer) {
+void SPA_LoadBg(const char *dir, int width, int height, int screen, int layer) {
     PA_LoadBg(dir, name, width, height); //loads background
     PA_CreateBg(screen, layer, dir); //creates background
 }
-void SPA_unloadbg(int screen, int layer, const char *name) {
+void SPA_UnloadBg(int screen, int layer, const char *name) {
     PA_DeleteBg(screen, layer); //delete bg
     PA_UnloadBg(name); //unload bg
 }
 // unload gfx and pallete in ram and vram
-void SPA_unloadsprite(int screen, int id) {
+void SPA_UnloadSprite(int screen, int id) {
     // ram
     PA_UnloadSpriteGfx(id); //unload sprite gfx
     PA_UnloadSpritePal(id);//unload sprite pal
