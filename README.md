@@ -25,12 +25,16 @@ thus it can be incompatible with recent versions of libnds/devkitarm
   So i decided to make nightfox's lib way easier
   
   <h2>nice, but how do i install it?</h2>
-  Use the template lol. <br>
-  you also can compile the lib yourself, just double click the makelib.bat file
+  Use the template, <strong>You can't install it. </strong> </p>
+  If you really want to install it then compile the library.<br>
+  copy the "lib" and "include" folders to devkitpro/libnds.<br>
+  
 <h2>Examples?</h2>
-Not yet lol
+Not yet.<br>
+You can contribute to make the examples, however, im working on it.</p>
 <h2>Credits</h2>
-<strong>thanks to knightfox 75 for nightfox's lib for libnds</strong>
+<strong>thanks to knightfox 75 for nightfox's lib for libnds</strong><br>
+aerglass because...</p>
 <h2>how to compile? </h2>
 download devkitpro (www.devkitpro.org/) </p>
 next download the repository </p>
