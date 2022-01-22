@@ -1,4 +1,4 @@
-# PA2lib
+# PA2lib (Future: EUFLlib)
 Programmer's arsenal 2 (continuation of PALib and based on Nightfox's lib)</p>
 
 a very small, simple but powerful library<br>
