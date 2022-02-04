@@ -13,9 +13,11 @@ Functions for time delay or anything else <br>
 Sounds (not music, use MaxMod for that)</p>
 bad things:<br>
 You NEED to use hbmenu to launch your game via r4!!!<br>
+some R4 cards are not compatible due to nitrofs support<br>
 The library is in public beta prerelease, it is not stable<br>
 if you want to migrate from older versions/older palib, installation is somewhat complex. <br>
-you need to convert your sprites using grit.
+you need to convert your sprites using grit.<br>
+May break on new libnds/devkitarm releases.<br>
 <h2> why?</h2>
 Nightfox's lib for libnds isn't updated anymore.
 thus it can be incompatible with recent versions of libnds/devkitarm
