@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <PA_lib.h>
 
-//do simplepalib things
+//SPA_Init Function
 void SPA_Init(){
         consoleDemoInit(); //initializes the text
         consoleClear(); //clears the text
@@ -26,12 +26,14 @@ void SPA_Init(){
         PA_InitMapBuffers(); //inits map buffers
         PA_InitSoundBuffers(); //inits sound buffers
 }
+//SPA_WaitFor Function
 void SPA_WaitFor(int sec){
         int i = 0; //inits a variable.
         for (i = 0; i < sec * 100; i++){ //does a for loop that is the second multiplied by 100
         swiWaitForVBlank(); //Waits for 60 frames...
         }
 }
+//SPA_LoadSprite function
     void SPA_LoadSprite(int screen, int id, int width, int height, const char *dir, bool transflag) {
     PA_LoadSpriteGfx(dir, id, width, height); //loads sprite gfx
     PA_LoadSpritePal(dir, id); //loads sprite pal
@@ -39,10 +41,12 @@ void SPA_WaitFor(int sec){
     PA_VramSpritePal(screen, id, id); //loads sprite pal on VRAM
 }
 
+//SPA_LoadBg
 void SPA_LoadBg(const char *dir, int width, int height, int screen, int layer) {
     PA_LoadBg(dir, name, width, height); //loads background
     PA_CreateBg(screen, layer, dir); //creates background
 }
+//SPA_UnlodBg
 void SPA_UnloadBg(int screen, int layer, const char *name) {
     PA_DeleteBg(screen, layer); //delete bg
     PA_UnloadBg(name); //unload bg
@@ -55,6 +59,7 @@ void SPA_UnloadSprite(int screen, int id) {
 
     PA_FreeSpriteGfx(screen, id);//frees sprite gfx
 }
+//SPA_Flush
 void SPA_Flush() {
     PA_SpriteOamSet(1);//set sprite oam to 1
     oamUpdate(&oamSub);//updates oam
@@ -64,15 +69,19 @@ void SPA_Flush() {
     PA_UpdateTextLayers();//update text layers
     swiWaitForVBlank(); //waits for vblank
 }
+//SPA_SetSpriteX
 void SPA_SetSpriteX(int screen, int id, float x){
 PA_MoveSprite(screen, id, x, false); //move sprite
 }
+//SPA_SetSpriteY
 void SPA_SetSpriteY(int screen, int id, float y){
         PA_MoveSprite(screen, id, false ,y); //move sprite
 }
+//SPA_SetSpriteXY
 void SPA_SetSpriteXY(int screen, int id, float x, float y){
         PA_MoveSprite(screen, id, x, y);//move sprite
 }
+//SPA_FlipSprite
 void SPA_FlipSprite(int screen, int id, int hflip, int vflip){
         PA_HflipSprite(screen, id, hflip);//hflips sprite
         PA_VflipSprite(screen, id, vflip);//vflips sprite
