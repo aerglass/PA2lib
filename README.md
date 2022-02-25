@@ -32,7 +32,7 @@ thus it can be incompatible with recent versions of libnds/devkitarm
   copy the "lib" and "include" folders to devkitpro/libnds.<br>
   
 <h2>Examples?</h2>
-Not yet.<br>
+They are work in progress.<br>
 You can contribute to make the examples, however, im working on it.</p>
 <h2>Credits</h2>
 <strong>thanks to knightfox 75 for nightfox's lib for libnds</strong><br>
