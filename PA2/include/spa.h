@@ -13,8 +13,8 @@ void SPA_Init();//function init
 void SPA_WaitFor(int sec);//function wait for
 void SPA_LoadSprite(int screen, int id, int width, int height, const char *dir, bool transflag);//function load sprite
 void SPA_LoadBackground(const char *dir, int width, int height, int screen, int layer);//function load background
-void SPA_unloadbg(int screen, int layer, const char *name);//unloads bg
-void SPA_unloadsprite(int screen, int id);//unload sprite
+void SPA_UnloadBg(int screen, int layer, const char *name);//unloads bg
+void SPA_UnloadSprite(int screen, int id);//unload sprite
 void SPA_Flush();//flush
 void SPA_SetSpriteX(int screen, int id, float x);//sets sprite x
 void SPA_SetSpriteY(int screen, int id, float y);//sets sprite y
