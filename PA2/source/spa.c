@@ -29,9 +29,8 @@ void SPA_Init(){
 //SPA_WaitFor Function
 void SPA_WaitFor(int sec){
         int i = 0; //inits a variable.
-        for (i = 0; i < sec * 100; i++){ //does a for loop that is the second multiplied by 100
-        swiWaitForVBlank(); //Waits for 60 frames...
-        }
+        //run a loop for 100 frames
+        for (i = 0; i < sec * 100; i++) swiWaitForVBlank(); //Waits for 60 frames...
 }
 //SPA_LoadSprite function
     void SPA_LoadSprite(int screen, int id, int width, int height, const char *dir, bool transflag) {
