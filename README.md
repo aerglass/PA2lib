@@ -48,7 +48,7 @@ pa2 folder, then type in "make clean" when it finishes, type "make" it will comp
 <h1>Docs?</h1>
 github wiki exist, i will be adding things into it.</p>
 <h1> About updates </h1>
-This updates basically every day, every change made into something that ins't on the releases tab is not stable.
+this updates when i have time, every change made into something that ins't on the releases tab is not stable.
 <h1> how to update? </h1><br>
   delete the existing PA2 folder from you proyect. Then download the latest stable release (you can use the unstabe builds but they are unstable lol) and then drag the pa2 folder from the template, now you are done
 <h1> license </h1> </p>
