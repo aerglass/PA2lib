@@ -157,7 +157,7 @@ void PA_Scale3dSprite(u16 id, u16 x, u16 y);
 
 // Funcion PA_Blend3dSprite();
 void PA_Blend3dSprite(u8 sprite, u8 poly_id, u8 alpha);
-/
+
 // Funcion PA_3dSpritesLayer();
 void PA_3dSpritesLayer(u8 layer);
 
