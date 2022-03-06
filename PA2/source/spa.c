@@ -41,7 +41,7 @@ void SPA_WaitFor(int sec){
 }
 
 //SPA_LoadBg
-void SPA_LoadBg(const char *dir, int width, int height, int screen, int layer) {
+void SPA_LoadBg(const char *dir, const char *name, int width, int height, int screen, int layer) {
     PA_LoadBg(dir, dir, width, height); //loads background
     PA_CreateBg(screen, layer, dir); //creates background
 }
