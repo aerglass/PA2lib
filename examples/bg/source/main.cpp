@@ -16,7 +16,7 @@ Date: 20/01/22
 int main(int argc, char **argv) {
 
 	SPA_Init();				//inits everything
-	SPA_LoadBackground("PA2lib", "bg", 256, 256, 0, 3); //load and display background
+	SPA_LoadBg("PA2lib", "bg", 256, 256, 0, 3); //load and display background
 	//loop for ever.
 	while(1) {
 		scanKeys();			//scan keys
