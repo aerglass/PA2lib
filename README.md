@@ -50,6 +50,8 @@ github wiki exist, i will be adding things into it.</p>
 <h1> About updates </h1>
 this updates when i have time, every change made into something that ins't on the releases tab is not stable.
 <h1> how to update? </h1><br>
-  delete the existing PA2 folder from you proyect. Then download the latest stable release (you can use the unstabe builds but they are unstable lol) and then drag the pa2 folder from the template, now you are done
+  delete the existing PA2 folder from you proyect. Then download the latest stable release (you can use the unstabe builds but they are unstable lol) and then drag the pa2 folder from the template, now you are done<br>
+  <h1> Contact </h1></p>
+  AerGlass#3242 on discord
 <h1> license </h1> </p>
 creative commons. But if you break the rules then i don't care, i just putted that licence due to nflib's license.
