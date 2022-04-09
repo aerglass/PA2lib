@@ -19,6 +19,9 @@ The library is in public beta prerelease, it is not stable<br>
 if you want to migrate from older versions/older palib, installation is somewhat complex. <br>
 you need to convert your sprites using grit.<br>
 May break on new libnds/devkitarm releases.<br>
+<h1> Known Bugs </h1></p>
+Somehow some images have random colors or descoloration. <br>
+While i was making some examples the background made random stuff, so don't use gimp lol <br>
 <h2> why?</h2>
 Nightfox's lib for libnds isn't updated anymore.
 thus it can be incompatible with recent versions of libnds/devkitarm
@@ -53,6 +56,14 @@ this updates when i have time, every change made into something that ins't on th
 <h1> how to update? </h1><br>
   delete the existing PA2 folder from you proyect. Then download the latest stable release (you can use the unstabe builds but they are unstable lol) and then drag the pa2 folder from the template, now you are done<br>
   <h1> Contact </h1></p>
-  AerGlass#3242 on discord
+  AerGlass#3242 on discord</p>
+  <h1> Donate </h1></p>
+  It takes long time and a lot of effort to get this working. (Maybe because i am the only dev maintaining trash) </p>
+  
+  Crypto:<br>
+  Ethereum: 0x4032a81A79cB216C0F85a742Ee95D314176E8395<br>
+  Polygon: 0x4032a81A79cB216C0F85a742Ee95D314176E8395</p>
+  
+  I don't think that anybody would want to donate to this trash but if you want then you can. </p>
 <h1> license </h1> </p>
 creative commons. But if you break the rules then i don't care, i just putted that licence due to nflib's license.
