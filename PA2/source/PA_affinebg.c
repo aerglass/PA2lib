@@ -14,15 +14,8 @@
 #include "PA_affinebg.h"
 
 
-
-
-
 // Estructura para almacenar los parametros de los fondos Affine
 PA_TYPE_AFFINE_BG PA_AFFINE_BG[2][4];
-
-
-
-
 
 // Funcion PA_InitTiledBgSys();
 void PA_InitAffineBg(u8 screen) {
@@ -38,16 +31,12 @@ void PA_InitAffineBg(u8 screen) {
 	// y 16 bancos de 2kb para mapas
 
 	// Inicializa el array de bloques libres de Tiles
-	for (n = 0; n < PA_BANKS_TILES[screen]; n ++) {
-		PA_TILEBLOCKS[screen][n] = 0;
-	}
-
+	for (n = 0; n < PA_BANKS_TILES[screen]; n ++) PA_TILEBLOCKS[screen][n] = 0;
+	
 	// Inicializa el array de bloques libres de Mapas
-	for (n = 0; n < PA_BANKS_MAPS[screen]; n ++) {
-		PA_MAPBLOCKS[screen][n] = 0;
-	}
+	for (n = 0; n < PA_BANKS_MAPS[screen]; n ++) PA_MAPBLOCKS[screen][n] = 0;
 
-	// Inicializa el array de iPAormacion de fondos en pantalla
+	// Inicializa el array de informacion de fondos en pantalla
 	for (n = 0; n < 4; n ++) {
 		PA_TILEDBG_LAYERS[screen][n].tilebase = 0;		// Base del Tileset
 		PA_TILEDBG_LAYERS[screen][n].tileblocks = 0;	// Bloques usados por el Tileset
@@ -68,40 +57,27 @@ void PA_InitAffineBg(u8 screen) {
 	// Cada bloque de 16kb (1 banco de tiles) permite 8 bancos de mapas (de 2kb cada uno)
 	u8 r_banks;
 	r_banks = ((PA_BANKS_MAPS[screen] - 1) >> 3) + 1;		// Calcula los bancos de Tiles a reservar para Maps
-	for (n = 0; n < r_banks; n ++) {
-		PA_TILEBLOCKS[screen][n] = 128;				// Marca que bancos de VRAM son para MAPS
-	}
-
+	for (n = 0; n < r_banks; n ++) PA_TILEBLOCKS[screen][n] = 128;// Marca que bancos de VRAM son para MAPS
+	
 	if (screen == 0) {
 		// Si es la pantalla 0 (Superior, Main engine)
 		vramSetBankA(VRAM_A_MAIN_BG);				// Banco A de la VRAM para fondos (128kb)
 		memset((void*)0x06000000, 0, 131072);		// Borra el contenido del banco A
-		for (n = 0; n < 4; n ++) {					// Oculta todas las 4 capas
-			PA_HideBg(0, n);
-		}
+		for (n = 0; n < 4; n ++) PA_HideBg(0, n); // Oculta todas las 4 capas
 	} else {
 		// Si es la pantalla 1 (IPAerior, Sub engine)
 		vramSetBankC(VRAM_C_SUB_BG);					// Banco C de la VRAM para fondos (128kb)
 		memset((void*)0x06200000, 0, 131072);			// Borra el contenido del banco C
-		for (n = 0; n < 4; n ++) {						// Oculta todas las 4 capas
-			PA_HideBg(1, n);
-		}
+		for (n = 0; n < 4; n ++) PA_HideBg(1, n);		// Oculta todas las 4 capas
 	}
-
 }
-
 
 
 // Funcion PA_LoadAffineBg();
 void PA_LoadAffineBg(const char* file, const char* name, u16 width, u16 height) {
-
 	// Verifica si el fondo cumple las medidas correctas
-	if (((width == 256) && (height == 256)) || ((width == 512) && (height == 512))) {
-		// Medida Ok
-	} else {
-		// Error de tama�o
-		PA_Error(117, name, 0);
-	}
+	if (((width == 256) && (height == 256)) || ((width == 512) && (height == 512))) {/* Medida Ok*/ } 
+	else PA_Error(117, name, 0);
 	
 	// Variable temporal del tama�o de la paleta
 	u32 pal_size = 0;
@@ -117,9 +93,7 @@ void PA_LoadAffineBg(const char* file, const char* name, u16 width, u16 height) 
 		}
 	}
 	// Si no hay ningun slot libre, error
-	if (slot == 255) {
-		PA_Error(103, "Tiled Bg", PA_SLOTS_TBG);
-	}
+	if (slot == 255) PA_Error(103, "Tiled Bg", PA_SLOTS_TBG);
 
 	// Vacia los buffers que se usaran
 	free(PA_BUFFER_BGMAP[slot]);		// Buffer para los mapas
@@ -145,14 +119,12 @@ void PA_LoadAffineBg(const char* file, const char* name, u16 width, u16 height) 
 		rewind(file_id);
 		// Reserva el espacio en RAM
 		PA_BUFFER_BGTILES[slot] = (char*) calloc (PA_TILEDBG[slot].tilesize, sizeof(char));
-		if (PA_BUFFER_BGTILES[slot] == NULL) {		// Si no hay suficiente RAM libre
-			PA_Error(102, NULL, PA_TILEDBG[slot].tilesize);
-		}
+		if (PA_BUFFER_BGTILES[slot] == NULL) PA_Error(102, NULL, PA_TILEDBG[slot].tilesize);// Si no hay suficiente RAM libre
+		
 		// Lee el archivo y ponlo en la RAM
 		fread(PA_BUFFER_BGTILES[slot], 1, PA_TILEDBG[slot].tilesize, file_id);
-	} else {	// Si el archivo no existe...
-		PA_Error(101, filename, 0);
-	}
+	} else PA_Error(101, filename, 0);// Si el archivo no existe...
+	
 	fclose(file_id);		// Cierra el archivo
 	// swiWaitForVBlank();		// Espera al cierre del archivo (Usar en caso de corrupcion de datos)
 
@@ -199,9 +171,8 @@ void PA_LoadAffineBg(const char* file, const char* name, u16 width, u16 height) 
 		}
 		// Lee el archivo y ponlo en la RAM
 		fread(PA_BUFFER_BGPAL[slot], 1, pal_size, file_id);
-	} else {	// Si el archivo no existe...
-		PA_Error(101, filename, 0);
-	}
+	} else PA_Error(101, filename, 0);// Si el archivo no existe...
+	
 	fclose(file_id);		// Cierra el archivo
 
 	// Guarda el nombre del Fondo
@@ -210,23 +181,15 @@ void PA_LoadAffineBg(const char* file, const char* name, u16 width, u16 height) 
 	// Y las medidas
 	PA_TILEDBG[slot].width = width;
 	PA_TILEDBG[slot].height = height;
-
 }
-
-
 
 // Funcion PA_UnloadAffineBg();
 void PA_UnloadAffineBg(const char* name) {
 	PA_UnloadBg(name);
 }
 
-
-
-
-
 // Funcion PA_CreateAffineBg();
 void PA_CreateAffineBg(u8 screen, u8 layer, const char* name, u8 wrap) {
-
 	// Variables
 	u8 n = 0;			// Bucle
 	u8 slot = 255;		// Slot seleccionado
@@ -244,15 +207,11 @@ void PA_CreateAffineBg(u8 screen, u8 layer, const char* name, u8 wrap) {
 		}
 	}
 	// Si no se encuentra, error
-	if (slot == 255) {
-		PA_Error(104, name, 0);
-	}
+	if (slot == 255) PA_Error(104, name, 0);
 
 	// Si ya hay un fondo existente en esta pantalla y capa, borralo antes
-	if (PA_TILEDBG_LAYERS[screen][layer].created) {
-		PA_DeleteBg(screen, layer);
-	}
-
+	if (PA_TILEDBG_LAYERS[screen][layer].created) PA_DeleteBg(screen, layer);
+	
 	// Variables de control de Tiles
 	u8 counter = 0;
 	u8 start = 255;
@@ -311,9 +270,8 @@ void PA_CreateAffineBg(u8 screen, u8 layer, const char* name, u8 wrap) {
 	// Si no se han encontrado bloques libres
 	if ((start == 255) || (counter < tilesblocks)) {
 		PA_Error(107, name, tilesblocks);
-	} else {	
-		basetiles = start;		// Guarda donde empiezan los bloques libres
-	}
+	} else basetiles = start;		// Guarda donde empiezan los bloques libres
+	
 
 	// Marca los bancos de Tiles usados por este fondo
 	for (n = basetiles; n < (basetiles + tilesblocks); n ++) {
@@ -441,10 +399,7 @@ void PA_CreateAffineBg(u8 screen, u8 layer, const char* name, u8 wrap) {
 
 	// Haz visible el fondo creado
 	PA_ShowBg(screen, layer);
-
 }
-
-
 
 // Funcion PA_DeleteAffineBg();
 void PA_DeleteAffineBg(u8 screen, u8 layer) {
@@ -470,35 +425,29 @@ void PA_DeleteAffineBg(u8 screen, u8 layer) {
 	// Borra el Tileset de la VRAM
 	basetiles = PA_TILEDBG_LAYERS[screen][layer].tilebase;
 	tilesize = (PA_TILEDBG_LAYERS[screen][layer].tileblocks << 14);
-	if (screen == 0) {	// (VRAM_A)
-		address = (0x6000000) + (basetiles << 14);
-	} else {			// (VRAM_C)
-		address = (0x6200000) + (basetiles << 14);
-	}
+	if (screen == 0) address = (0x6000000) + (basetiles << 14);// (VRAM_A)
+	
+	else address = (0x6200000) + (basetiles << 14);// (VRAM_C)
+	
 	memset((void*)address, 0, tilesize);		// Pon a 0 todos los bytes de la area de VRAM
 
 	// Borra el Mapa de la VRAM
 	basemap = PA_TILEDBG_LAYERS[screen][layer].mapbase;
 	mapsize = (PA_TILEDBG_LAYERS[screen][layer].mapblocks << 11);
-	if (screen == 0) {	// (VRAM_A)
-		address = (0x6000000) + (basemap << 11);
-	} else {			// (VRAM_C)
-		address = (0x6200000) + (basemap << 11);
-	}
+	if (screen == 0) address = (0x6000000) + (basemap << 11);// (VRAM_A)
+	
+	else address = (0x6200000) + (basemap << 11);// (VRAM_C)
+	
 	memset((void*)address, 0, mapsize);		// Pon a 0 todos los bytes de la area de VRAM
 
 	// Marca como libres los bancos de Tiles usados por este fondo
 	tilesize = (basetiles + PA_TILEDBG_LAYERS[screen][layer].tileblocks);
-	for (n = basetiles; n < tilesize; n ++) {
-		PA_TILEBLOCKS[screen][n] = 0;
-	}
-
+	for (n = basetiles; n < tilesize; n ++) PA_TILEBLOCKS[screen][n] = 0;
+	
 	// Marca como libres los bancos de Mapa usados por este fondo
 	mapsize = (basemap + PA_TILEDBG_LAYERS[screen][layer].mapblocks);
-	for (n = basemap; n < mapsize; n ++) {
-		PA_MAPBLOCKS[screen][n] = 0;
-	}
-
+	for (n = basemap; n < mapsize; n ++) PA_MAPBLOCKS[screen][n] = 0;
+	
 	// Borra los datos del fondos en pantalla
 	PA_TILEDBG_LAYERS[screen][layer].tilebase = 0;		// Base del Tileset
 	PA_TILEDBG_LAYERS[screen][layer].tileblocks = 0;	// Bloques usados por el Tileset
@@ -513,10 +462,7 @@ void PA_DeleteAffineBg(u8 screen, u8 layer) {
 	PA_TILEDBG_LAYERS[screen][layer].blockx = 0;		// Bloque de mapa actual (horizontal)
 	PA_TILEDBG_LAYERS[screen][layer].blocky = 0;		// Bloque de mapa actual (vertical)
 	PA_TILEDBG_LAYERS[screen][layer].created = false;	// Esta creado ?
-
 }
-
-
 
 // Funcion PA_AffineBgTransform();
 void PA_AffineBgTransform(u8 screen, u8 layer, s32 x_scale, s32 y_scale, s32 x_tilt, s32 y_tilt) {
@@ -552,22 +498,16 @@ void PA_AffineBgTransform(u8 screen, u8 layer, s32 x_scale, s32 y_scale, s32 x_t
 				break;
 		}
 	}
-
 	// Registra los valores asignados
 	PA_AFFINE_BG[screen][layer].x_scale = x_scale;
 	PA_AFFINE_BG[screen][layer].x_tilt = x_tilt;
 	PA_AFFINE_BG[screen][layer].y_tilt = y_tilt;
 	PA_AFFINE_BG[screen][layer].y_scale = y_scale;
-
 }
-
-
-
 
 
 // Funcion PA_AffineBgMove();
 void PA_AffineBgMove(u8 screen, u8 layer, s32 x, s32 y, s32 angle) {
-
 	// Funcion de rotacion basada en la original de Libnds
 	// creada por Dovoto y Wintermute.
 
@@ -586,12 +526,10 @@ void PA_AffineBgMove(u8 screen, u8 layer, s32 x, s32 y, s32 angle) {
 	in = angle;
 
 	// Limites del angulo
-	if (in < -2048) {
-		in += 2048;
-	}
-	if (in > 2048) {
-		in -= 2048;
-	}
+	if (in < -2048) in += 2048;
+	
+	if (in > 2048) in -= 2048;
+	
 	
 	// Si es un numero negativo...
 	if (in < 0) {
@@ -652,8 +590,6 @@ void PA_AffineBgMove(u8 screen, u8 layer, s32 x, s32 y, s32 angle) {
 
 }
 
-
-
 // Funcion PA_AffineBgCenter();
 void PA_AffineBgCenter(u8 screen, u8 layer, s32 x, s32 y) {
 
@@ -661,4 +597,3 @@ void PA_AffineBgCenter(u8 screen, u8 layer, s32 x, s32 y) {
 	PA_AFFINE_BG[screen][layer].y_center = y;
 
 }
-
