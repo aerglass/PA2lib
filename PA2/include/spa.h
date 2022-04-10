@@ -9,7 +9,8 @@ extern "C" {
 #include <nds.h>//include libnds
 #include <PA_lib.h>//include PA2lib
   
-void SPA_Init();//function init
+void SPA_Init(u8 screen);//function init
+void SPA_InitDefault(u8 screen); //function init default
 void SPA_WaitFor(int sec);//function wait for
 void SPA_LoadSprite(int screen, int id, int width, int height, const char *dir, bool transflag);//function load sprite
 void SPA_LoadBg(const char *dir, const char *name, int width, int height, int screen, int layer);//function load background
