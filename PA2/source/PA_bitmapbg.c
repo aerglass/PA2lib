@@ -13,22 +13,14 @@
 #include "PA_2d.h"
 
 
-
 // Define los Buffers para almacenar datos de 16 bits
 PA_TYPE_BG16B_IPAO PA_BG16B[PA_SLOTS_BG16B];		// Fondos RAW de 16 bits
-
 // Backbuffer de 16 bits de cada pantalla
 u16* PA_16BITS_BACKBUFFER[2];
-
 // Define los Buffers para almacenar datos de 8 bits
 PA_TYPE_BG8B_IPAO PA_BG8B[PA_SLOTS_BG8B];	// Fondos indexados de 8 bits
-
 // Backbuffer de 8 bits de cada pantalla
 PA_TYPE_BB8B_IPAO PA_8BITS_BACKBUFFER[2];
-
-
-
-
 
 // Funcion PA_Init16bitsBgBuffers();
 void PA_Init16bitsBgBuffers(void) {
@@ -43,21 +35,15 @@ void PA_Init16bitsBgBuffers(void) {
 	}
 }
 
-
-
 // Funcion PA_Reset16bitsBgBuffers();
 void PA_Reset16bitsBgBuffers(void) {
 	// Variables locales
 	u8 n = 0;
 	// Libera la RAM
-	for (n = 0; n < PA_SLOTS_BG16B; n ++) {
-		free(PA_BG16B[n].buffer);
-	}
+	for (n = 0; n < PA_SLOTS_BG16B; n ++) free(PA_BG16B[n].buffer);
 	// Reinicia los datos
 	PA_Init16bitsBgBuffers();
 }
-
-
 
 // Funcion PA_Init16bitsBackBuffer();
 void PA_Init16bitsBackBuffer(u8 screen) {
@@ -65,7 +51,6 @@ void PA_Init16bitsBackBuffer(u8 screen) {
 	if (scr > 1) scr = 1; 
 	PA_16BITS_BACKBUFFER[scr] = NULL;
 }
-
 
 // Funcion PA_Enable16bitsBackBuffer();
 void PA_Enable16bitsBackBuffer(u8 screen) {
@@ -79,8 +64,6 @@ void PA_Enable16bitsBackBuffer(u8 screen) {
 	// Devuelve error si no hay suficiente memoria
 	if (PA_16BITS_BACKBUFFER[scr] == NULL) PA_Error(102, NULL, 131072);
 }
-
-
 
 // Funcion PA_Disble16bitsBackBuffer();
 void PA_Disble16bitsBackBuffer(u8 screen) {
@@ -97,38 +80,26 @@ void PA_Disble16bitsBackBuffer(u8 screen) {
 void PA_Flip16bitsBackBuffer(u8 screen) {
 	// Copia el contenido del Backbuffer a la VRAM
 	// de la pantalla solicitada
-	if (screen == 0) {
-		PA_DmaMemCopy((void*)0x06000000, PA_16BITS_BACKBUFFER[0], 131072);
-	} else {
-		PA_DmaMemCopy((void*)0x06200000, PA_16BITS_BACKBUFFER[1], 131072);
-	}
+	if (screen == 0) PA_DmaMemCopy((void*)0x06000000, PA_16BITS_BACKBUFFER[0], 131072);
+	else PA_DmaMemCopy((void*)0x06200000, PA_16BITS_BACKBUFFER[1], 131072);
 }
-
-
 
 // Funcion PA_InitBitmapBgSys();
 void PA_InitBitmapBgSys(u8 screen, u8 mode) {
-
 	// Habilita la capa 3 de la pantalla indicada en modo BITMAP
-
 	// Variables locales
 	u8 n = 0;
-
 	// Inicializa la VRAM
 	if (screen == 0) {
 		vramSetBankA(VRAM_A_MAIN_BG);				// Banco A de la VRAM para fondos (128kb)
 		memset((void*)0x06000000, 0, 131072);		// Borra el contenido del banco A
 		// Oculta todas las capas
-		for (n = 0; n < 4; n ++) {					// Oculta todas las 4 capas
-			PA_HideBg(0, n);
-		}
+		for (n = 0; n < 4; n ++) PA_HideBg(0, n);// Oculta todas las 4 capas
 	} else {
 		vramSetBankC(VRAM_C_SUB_BG);					// Banco C de la VRAM para fondos (128kb)
 		memset((void*)0x06200000, 0, 131072);			// Borra el contenido del banco C
 		// Oculta todas las capas
-		for (n = 0; n < 4; n ++) {					// Oculta todas las 4 capas
-			PA_HideBg(1, n);
-		}
+		for (n = 0; n < 4; n ++) PA_HideBg(1, n);// Oculta todas las 4 capas
 	}
 
 	// Inicializa la capa de dibujado
@@ -136,9 +107,8 @@ void PA_InitBitmapBgSys(u8 screen, u8 mode) {
 		if (mode == 0) {	// Modo 8 bits (Capas 1 y 3)
 			REG_BG3CNT = BG_PRIORITY_3 | BG_BMP_BASE(4) | BG_BMP8_256x256;
 			REG_BG2CNT = BG_PRIORITY_2 | BG_BMP_BASE(0) | BG_BMP8_256x256;
-		} else {			// Modo 16 bits
-			REG_BG3CNT = BG_PRIORITY_3 | BG_BMP_BASE(0) | BG_BMP16_256x256;
-		}
+		} else REG_BG3CNT = BG_PRIORITY_3 | BG_BMP_BASE(0) | BG_BMP16_256x256;	// Modo 16 bits
+		
 		// Resetea los registros de RotScale (Capa 3)
 		REG_BG3PA = (1 << 8);
 		REG_BG3PB = 0;
@@ -159,9 +129,8 @@ void PA_InitBitmapBgSys(u8 screen, u8 mode) {
 		if (mode == 0) {	// Modo 8 bits (Capas 2 y 3)
 			REG_BG3CNT_SUB = BG_PRIORITY_3 | BG_BMP_BASE(4) | BG_BMP8_256x256;
 			REG_BG2CNT_SUB = BG_PRIORITY_2 | BG_BMP_BASE(0) | BG_BMP8_256x256;
-		} else {			// Modo 16 bits
-			REG_BG3CNT_SUB = BG_PRIORITY_3 | BG_BMP_BASE(0) | BG_BMP16_256x256;
-		}
+		} else REG_BG3CNT_SUB = BG_PRIORITY_3 | BG_BMP_BASE(0) | BG_BMP16_256x256; // Modo 16 bits
+		
 		// Resetea los registros de RotScale (Capa 3)
 		REG_BG3PA_SUB = (1 << 8);
 		REG_BG3PB_SUB = 0;
@@ -179,10 +148,7 @@ void PA_InitBitmapBgSys(u8 screen, u8 mode) {
 			PA_ShowBg(1, 2);						// Muestra la capa 2
 		}
 	}
-
 }
-
-
 
 // Funcion PA_Load16bitsBg();
 void PA_Load16bitsBg(const char* file, u8 slot) {
@@ -205,11 +171,9 @@ void PA_Load16bImgData(const char* file, u8 slot, u16 x, u16 y, u8 type) {
 	
 	// Verifica el rango de Id's
 	if ((slot < 0) || (slot >= PA_SLOTS_BG16B)) {
-		if (type == 0) {
-			PA_Error(106, "16 Bits Bg's", PA_SLOTS_BG16B);
-		} else {
-			PA_Error(106, "16 Bits Image", PA_SLOTS_BG16B);
-		}
+		if (type == 0) PA_Error(106, "16 Bits Bg's", PA_SLOTS_BG16B);
+		 
+		else PA_Error(106, "16 Bits Image", PA_SLOTS_BG16B);
 	}
 
 	// Vacia los buffers que se usaran
@@ -242,17 +206,14 @@ void PA_Load16bImgData(const char* file, u8 slot, u16 x, u16 y, u8 type) {
 		}
 		// Lee el archivo y ponlo en la RAM
 		fread(PA_BG16B[slot].buffer, 1, size, file_id);
-	} else {	// Si el archivo no existe...
-		PA_Error(101, filename, 0);
-	}
+	} else PA_Error(101, filename, 0);	// Si el archivo no existe...
+	
 	fclose(file_id);		// Cierra el archivo
 
 	// Asegurate que el alpha bit (BIT 15) esta marcado
 	u32 n = 0;
-	for (n = 0; n < (size >> 1); n ++) {
-		PA_BG16B[slot].buffer[n] |= BIT(15);
-	}
-
+	for (n = 0; n < (size >> 1); n ++) PA_BG16B[slot].buffer[n] |= BIT(15);
+	
 	// Guarda los parametros del fondo
 	PA_BG16B[slot].size = size;		// Guarda el tamaño
 	PA_BG16B[slot].width = x;		// Ancho del fondo
@@ -261,11 +222,8 @@ void PA_Load16bImgData(const char* file, u8 slot, u16 x, u16 y, u8 type) {
 
 }
 
-
-
 // Funcion PA_Unload16bitsBg();
 void PA_Unload16bitsBg(u8 slot) {
-	
 	// Verifica si el buffer contiene datos
 	if (!PA_BG16B[slot].inuse) PA_Error(110, "16 Bits Bg", slot);
 
@@ -275,40 +233,26 @@ void PA_Unload16bitsBg(u8 slot) {
 
 	PA_BG16B[slot].size = 0;		// Tamaño a 0
 	PA_BG16B[slot].inuse = false;	// Marca que esta libre
-
 }
-
-
 
 // Funcion PA_Copy16bitsBuffer();
 void PA_Copy16bitsBuffer(u8 screen, u8 destination, u8 slot) {
-
 	// Verifica si el buffer contiene datos
 	if (!PA_BG16B[slot].inuse) PA_Error(110, "16 Bits Bg", slot);
 
 	if (destination == 0) {		// Si el destino es la VRAM
 		// Dependiendo de la pantalla
-		if (screen == 0) {
-			PA_DmaMemCopy((void*)0x06000000, PA_BG16B[slot].buffer, PA_BG16B[slot].size);
-		} else {
-			PA_DmaMemCopy((void*)0x06200000, PA_BG16B[slot].buffer, PA_BG16B[slot].size);
-		}
+		if (screen == 0) PA_DmaMemCopy((void*)0x06000000, PA_BG16B[slot].buffer, PA_BG16B[slot].size);
+		else PA_DmaMemCopy((void*)0x06200000, PA_BG16B[slot].buffer, PA_BG16B[slot].size);
 	} else {					// Si el destino es el BackBuffer
 		// Dependiendo de la pantalla
-		if (screen == 0) {
-			memcpy(PA_16BITS_BACKBUFFER[0], PA_BG16B[slot].buffer, PA_BG16B[slot].size);
-		} else {
-			memcpy(PA_16BITS_BACKBUFFER[1], PA_BG16B[slot].buffer, PA_BG16B[slot].size);
-		}
+		if (screen == 0) memcpy(PA_16BITS_BACKBUFFER[0], PA_BG16B[slot].buffer, PA_BG16B[slot].size);
+		 else memcpy(PA_16BITS_BACKBUFFER[1], PA_BG16B[slot].buffer, PA_BG16B[slot].size);
 	}
-
 }
-
-
 
 // Funcion PA_Draw16bitsImage();
 void PA_Draw16bitsImage(u8 screen, u8 slot, s16 x, s16 y, bool alpha) {
-
 	// Verifica si el buffer contiene datos
 	if (!PA_BG16B[slot].inuse) PA_Error(110, "16 Bits Image", slot);
 
@@ -345,17 +289,13 @@ void PA_Draw16bitsImage(u8 screen, u8 slot, s16 x, s16 y, bool alpha) {
 				// Valor del Pixel
 				data = PA_BG16B[slot].buffer[((img_y * PA_BG16B[slot].width) + img_x)]; 
 				// Si el pixel NO es magenta !(RGB15(31, 0, 31) | BIT(15))
-				if ((data != 0xFC1F) || (!alpha)) {
-					// Escribe el pixel en el BackBuffer
-					*(PA_16BITS_BACKBUFFER[scr] + buff_idx) = data;
+				if ((data != 0xFC1F) || (!alpha)) {*(PA_16BITS_BACKBUFFER[scr] + buff_idx) = data; // Escribe el pixel en el BackBuffer
 				}
 			}
 		}
 	}
 
 }
-
-
 
 // Funcion PA_Init8bitsBgBuffers();
 void PA_Init8bitsBgBuffers(void) {
@@ -370,8 +310,6 @@ void PA_Init8bitsBgBuffers(void) {
 	}
 }
 
-
-
 // Funcion PA_Reset8bitsBgBuffers();
 void PA_Reset8bitsBgBuffers(void) {
 	// Variables locales
@@ -384,15 +322,11 @@ void PA_Reset8bitsBgBuffers(void) {
 	// Reinicia los datos
 	PA_Init8bitsBgBuffers();
 }
-
-
 // Funcion PA_Load8bitsBg();
 void PA_Load8bitsBg(const char* file, u8 slot) {
 	
 	// Verifica el rango de Id's
-	if ((slot < 0) || (slot >= PA_SLOTS_BG8B)) {
-		PA_Error(106, "8 Bits Bg's", PA_SLOTS_BG8B);
-	}
+	if ((slot < 0) || (slot >= PA_SLOTS_BG8B)) PA_Error(106, "8 Bits Bg's", PA_SLOTS_BG8B);
 
 	// Vacia los buffers que se usaran
 	free(PA_BG8B[slot].data);
@@ -421,14 +355,13 @@ void PA_Load8bitsBg(const char* file, u8 slot) {
 		if (size > 65536) PA_Error(116, filename, 65536);
 		// Reserva el espacio en RAM
 		PA_BG8B[slot].data = (u8*) calloc (size, sizeof(u8));
-		if (PA_BG8B[slot].data == NULL) {		// Si no hay suficiente RAM libre
-			PA_Error(102, NULL, size);
-		}
+		if (PA_BG8B[slot].data == NULL) PA_Error(102, NULL, size); // Si no hay suficiente RAM libre
+		
 		// Lee el archivo y ponlo en la RAM
 		fread(PA_BG8B[slot].data, 1, size, file_id);
-	} else {	// Si el archivo no existe...
-		PA_Error(101, filename, 0);
-	}
+		
+	} else PA_Error(101, filename, 0); // Si el archivo no existe...
+	
 	fclose(file_id);		// Cierra el archivo
 	PA_BG8B[slot].data_size = size;		// Guarda el tamaño del buffer
 
@@ -444,27 +377,21 @@ void PA_Load8bitsBg(const char* file, u8 slot) {
 		if (size < 512) size = 512;
 		// Reserva el espacio en RAM
 		PA_BG8B[slot].pal = (u16*) calloc ((size >> 1), sizeof(u16));
-		if (PA_BG8B[slot].pal == NULL) {		// Si no hay suficiente RAM libre
-			PA_Error(102, NULL, size);
-		}
+		if (PA_BG8B[slot].pal == NULL) {PA_Error(102, NULL, size);// Si no hay suficiente RAM libre
+		
 		// Lee el archivo y ponlo en la RAM
 		fread(PA_BG8B[slot].pal, 1, size, file_id);
-	} else {	// Si el archivo no existe...
-		PA_Error(101, filename, 0);
-	}
+	} else PA_Error(101, filename, 0);// Si el archivo no existe...
+	
 	fclose(file_id);		// Cierra el archivo
 	PA_BG8B[slot].pal_size = size;		// Guarda el tamaño del buffer
 
 	// Marca el slot como que esta en uso
 	PA_BG8B[slot].inuse = true;
-
 }
-
-
 
 // Funcion PA_Unload8bitsBg();
 void PA_Unload8bitsBg(u8 slot) {
-	
 	// Verifica si el buffer contiene datos
 	if (!PA_BG8B[slot].inuse) PA_Error(110, "8 Bits Bg", slot);
 
@@ -477,14 +404,10 @@ void PA_Unload8bitsBg(u8 slot) {
 	PA_BG8B[slot].pal_size = 0;
 
 	PA_BG8B[slot].inuse = false;	// Marca que esta libre
-
 }
-
-
 
 // Funcion PA_Copy8bitsBuffer();
 void PA_Copy8bitsBuffer(u8 screen, u8 destination, u8 slot) {
-
 	// Verifica si el buffer contiene datos
 	if (!PA_BG8B[slot].inuse) PA_Error(110, "8 Bits Bg", slot);
 
@@ -493,7 +416,6 @@ void PA_Copy8bitsBuffer(u8 screen, u8 destination, u8 slot) {
 
 	// Si el destino es la VRAM
 	if (destination < 2) {
-
 		// Segun la pantalla...
 		u32 data = 0;
 		u32 pal = 0;
@@ -511,16 +433,11 @@ void PA_Copy8bitsBuffer(u8 screen, u8 destination, u8 slot) {
 		PA_DmaMemCopy((void*)pal, PA_BG8B[slot].pal, PA_BG8B[slot].pal_size);
 
 	} else {
-
 		// Copia los datos al BackBuffer
 		memcpy(PA_8BITS_BACKBUFFER[scr].data, PA_BG8B[slot].data, PA_BG8B[slot].data_size);
 		memcpy(PA_8BITS_BACKBUFFER[scr].pal, PA_BG8B[slot].pal, PA_BG8B[slot].pal_size);
-
 	}
-
 }
-
-
 
 // Funcion PA_Init8bitsBackBuffer();
 void PA_Init8bitsBackBuffer(u8 screen) {
@@ -529,8 +446,6 @@ void PA_Init8bitsBackBuffer(u8 screen) {
 	PA_8BITS_BACKBUFFER[scr].data = NULL;
 	PA_8BITS_BACKBUFFER[scr].pal = NULL;
 }
-
-
 
 // Funcion PA_Enable8bitsBackBuffer();
 void PA_Enable8bitsBackBuffer(u8 screen) {
@@ -549,8 +464,6 @@ void PA_Enable8bitsBackBuffer(u8 screen) {
 	if (PA_8BITS_BACKBUFFER[scr].pal == NULL) PA_Error(102, NULL, 512);
 }
 
-
-
 // Funcion PA_Disble8bitsBackBuffer();
 void PA_Disble8bitsBackBuffer(u8 screen) {
 	u8 scr = screen;
@@ -562,11 +475,8 @@ void PA_Disble8bitsBackBuffer(u8 screen) {
 	PA_8BITS_BACKBUFFER[scr].pal = NULL;
 }
 
-
-
 // Funcion PA_Flip8bitsBackBuffer();
 void PA_Flip8bitsBackBuffer(u8 screen, u8 destination) {
-
 	// Copia el contenido del Backbuffer a la VRAM
 	// de la pantalla solicitada
 	u8 scr = screen;
@@ -585,9 +495,7 @@ void PA_Flip8bitsBackBuffer(u8 screen, u8 destination) {
 
 	// Segun la capa
 	if (destination == 1) data += 65536;
-
 	// Copia los datos a la VRAM
 	PA_DmaMemCopy((void*)data, PA_8BITS_BACKBUFFER[scr].data, 65536);
 	PA_DmaMemCopy((void*)pal, PA_8BITS_BACKBUFFER[scr].pal, 512);
-
 }
