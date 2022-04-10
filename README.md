@@ -3,6 +3,7 @@ Programmer's arsenal 2 (continuation of PALib and based on Nightfox's lib)</p>
 
 a very small, simple but powerful library<br>
 features:<br>
+ultrafast render. <br>
 Very easy to learn <br>
 is less than a megabyte <br>
 text<br>
@@ -11,6 +12,7 @@ backgrounds<br>
 3D Sprites <br>
 Functions for time delay or anything else <br>
 Sounds (not music, use MaxMod for that)</p>
+
 bad things:<br>
 You NEED to use hbmenu to launch your game via r4!!!<br>
 some R4 cards are not compatible due to nitrofs support<br>
@@ -18,11 +20,12 @@ The library is in public beta prerelease, it is not stable<br>
 if you want to migrate from older versions/older palib, installation is somewhat complex. <br>
 you need to convert your sprites using grit.<br>
 May break on new libnds/devkitarm releases.<br>
+Every time a update releases, older proyects break somehow.<br>
 <h1> Known Bugs </h1></p>
 Somehow some images have random colors or descoloration. <br>
-While i was making some examples the background made random stuff, so don't use gimp lol </p>
+While i was making some examples the background made random stuff.</p>
 Workarrounds:<br>
-fill the entire 256 colors with black, or else it wont work. or put -gB8 flag while converting the backgrounds.
+fill the entire 256 colors with black use gimp, or else put -gB8 flag while converting the backgrounds.
 <h2> why?</h2>
 Nightfox's lib for libnds isn't updated anymore.
 thus it can be incompatible with recent versions of libnds/devkitarm
