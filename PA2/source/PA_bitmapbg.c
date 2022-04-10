@@ -360,7 +360,7 @@ void PA_Load8bitsBg(const char* file, u8 slot) {
 		// Lee el archivo y ponlo en la RAM
 		fread(PA_BG8B[slot].data, 1, size, file_id);
 	}
-	} else PA_Error(101, filename, 0); // Si el archivo no existe...
+	else PA_Error(101, filename, 0); // Si el archivo no existe...
 	
 	fclose(file_id);		// Cierra el archivo
 	PA_BG8B[slot].data_size = size;		// Guarda el tamaño del buffer
