@@ -389,7 +389,7 @@ void PA_Load8bitsBg(const char* file, u8 slot) {
 	// Marca el slot como que esta en uso
 	PA_BG8B[slot].inuse = true;
 }
-
+}
 // Funcion PA_Unload8bitsBg();
 void PA_Unload8bitsBg(u8 slot) {
 	// Verifica si el buffer contiene datos
