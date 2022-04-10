@@ -10,52 +10,62 @@
 #include "PA_tiledbg.h"
 #include "PA_sprite256.h"
 
-
-
-
-
 // Funcion PA_Set2D();
 void PA_Init2D(u8 screen, u8 mode) {
-
 	if (screen == 0) {		// Pantalla Superior
-
 		switch (mode) {		// Selecciona modo
 			case 0:		
 				videoSetMode(MODE_0_2D);
 				break;
+			case 1:
+				videoSetMode(MODE_1_2D);
+				break;
 			case 2:		
 				videoSetMode(MODE_2_2D);
+				break;
+			case 3:
+				videoSetMode(MODE_3_2D);
+				break;
+			case 4:
+				videoSetMode(MODE_4_2D);
 				break;
 			case 5:
 				videoSetMode(MODE_5_2D);
 				break;
+			case 6:
+				videoSetMode(MODE_6_2D);
+				break;
 		}
-
-	} else {				// Pantalla iPAerior
-
+	} else {				// Pantalla inferior
 		switch (mode) {		// Seleccion modo
 			case 0:
 				videoSetModeSub(MODE_0_2D);
 				break;
+			case 1:
+				videoSetModeSub(MODE_1_2D);
+				break;
 			case 2:
 				videoSetModeSub(MODE_2_2D);
+				break;
+			case 3:
+				videoSetModeSub(MODE_3_2D);
+				break;
+			case 4:
+				videoSetModeSub(MODE_4_2D);
 				break;
 			case 5:
 				videoSetModeSub(MODE_5_2D);
 				break;
+			case 6:
+				videoSetModeSub(MODE_6_2D);
+				break;
 		}
-
 	}
-
 }
-
-
 
 // Funcion PA_ShowBg();
 void PA_ShowBg(u8 screen, u8 layer) {
-
 	if (screen == 0) {		// Pantalla Superior
-
 		switch (layer) {	// Segun la capa
 			case 0:
 				REG_DISPCNT |= (DISPLAY_BG0_ACTIVE);
@@ -72,7 +82,6 @@ void PA_ShowBg(u8 screen, u8 layer) {
 		}
 
 	} else {				// Pantalla IPAerior
-
 		switch (layer) {	// Segun la capa
 			case 0:
 				REG_DISPCNT_SUB |= (DISPLAY_BG0_ACTIVE);
@@ -87,18 +96,12 @@ void PA_ShowBg(u8 screen, u8 layer) {
 				REG_DISPCNT_SUB |= (DISPLAY_BG3_ACTIVE);
 				break;
 		}
-
 	}
-
 }
-
-
 
 // Funcion PA_HideBg();
 void PA_HideBg(u8 screen, u8 layer) {
-
 	if (screen == 0) {		// Pantalla Superior
-
 		switch (layer) {	// Segun la capa
 			case 0:
 				REG_DISPCNT &= ~(DISPLAY_BG0_ACTIVE);
@@ -113,9 +116,7 @@ void PA_HideBg(u8 screen, u8 layer) {
 				REG_DISPCNT &= ~(DISPLAY_BG3_ACTIVE);
 				break;
 		}
-
 	} else {				// Pantalla IPAerior
-
 		switch (layer) {	// Segun la capa
 			case 0:
 				REG_DISPCNT_SUB &= ~(DISPLAY_BG0_ACTIVE);
@@ -130,23 +131,16 @@ void PA_HideBg(u8 screen, u8 layer) {
 				REG_DISPCNT_SUB &= ~(DISPLAY_BG3_ACTIVE);
 				break;
 		}
-
 	}
-
 }
-
-
 
 // Funcion PA_ScrollBg();
 void PA_ScrollBg(u8 screen, u8 layer, s16 x, s16 y) {
-
 	// Variables temporales
 	s16 sx = x;
 	s16 sy = y;
-
 	// Si el mapa es iPAinito... > 512
 	if (PA_TILEDBG_LAYERS[screen][layer].bgtype > 0) {
-
 		// Variables temporales de Fondos iPAinitos
 		u32 address = 0;		// Puntero a la VRAM
 		u16 blockx = 0;		// Nº de bloque en pantalla
@@ -236,9 +230,7 @@ void PA_ScrollBg(u8 screen, u8 layer, s16 x, s16 y) {
 				sx = x - (blockx << 8);
 				sy = y - (blocky << 8);
 				break;
-
 		}
-
 	}
 
 	// Mueve el fondo usando los registros
@@ -262,7 +254,6 @@ void PA_ScrollBg(u8 screen, u8 layer, s16 x, s16 y) {
 				REG_BG3VOFS = sy;
 				break;
 		}
-
 	} else {
 
 		switch (layer) {	// Segun la capa
@@ -283,35 +274,22 @@ void PA_ScrollBg(u8 screen, u8 layer, s16 x, s16 y) {
 				REG_BG3VOFS_SUB = sy;
 				break;
 		}
-
 	}
-
 }
-
-
 
 // Funcion PA_MoveSprite();
 void PA_MoveSprite(u8 screen, u8 id, s16 x, s16 y) {
-
 	PA_SPRITEOAM[screen][id].x = x;		// Coordenada X
 	PA_SPRITEOAM[screen][id].y = y;		// Coordenada Y
-
 }
-
-
 
 // Funcion PA_SpriteLayer();
 void PA_SpriteLayer(u8 screen, u8 id, u8 layer) {
-
 	PA_SPRITEOAM[screen][id].layer = layer;		// Capa sobre la que esta el sprite
-
 }
-
-
 
 // Funcion PA_ShowSprite();
 void PA_ShowSprite(u8 screen, u8 id, bool show) {
-
 	PA_SPRITEOAM[screen][id].hide = !show;		// Muestra o oculta el sprite
 
 }
@@ -320,53 +298,36 @@ void PA_ShowSprite(u8 screen, u8 id, bool show) {
 
 // Funcion PA_HflipSprite();
 void PA_HflipSprite(u8 screen, u8 id, bool hflip) {
-
 	PA_SPRITEOAM[screen][id].hflip = hflip;		// Volteado horizontal;
-
 }
-
-
 
 // Funcion PA_GetSpriteHflip();
 bool PA_GetSpriteHflip(u8 screen, u8 id) {
 	return PA_SPRITEOAM[screen][id].hflip;
 }
 
-
-
 // Funcion PA_VflipSprite();
 void PA_VflipSprite(u8 screen, u8 id, bool vflip) {
-
 	PA_SPRITEOAM[screen][id].vflip = vflip;		// Volteado vertical;
-
 }
-
-
 
 // Funcion PA_GetSpriteVflip();
 bool PA_GetSpriteVflip(u8 screen, u8 id) {
 	return PA_SPRITEOAM[screen][id].vflip;
 }
 
-
-
 // Funcion PA_SpriteFrame();
 void PA_SpriteFrame(u8 screen, u8 id, u16 frame) {
-
 	// Verifica el rango de Id's de Sprites
 	if ((id < 0) || (id > 127)) {
 		PA_Error(106, "Sprite", 127);
 	}
-
 	// Verifica el rango de frames del Sprite
 	if (frame > PA_SPRITEOAM[screen][id].lastframe) {
 		PA_Error(106, "Sprite frame", PA_SPRITEOAM[screen][id].lastframe);
 	}
-
-
 	// Verifica si el frame necesita ser actualizado
 	if (PA_SPRITEOAM[screen][id].frame != frame) {
-
 		// Si debes de copiar el nuevo frame desde la RAM a la VRAM...
 		if (PA_SPR256VRAM[screen][PA_SPRITEOAM[screen][id].gfxid].keepframes) {
 
@@ -382,28 +343,19 @@ void PA_SpriteFrame(u8 screen, u8 id, u16 frame) {
 
 			// Copialo
 			PA_DmaMemCopy((void*)destination, source, PA_SPRITEOAM[screen][id].framesize);
-
 		} else {	// Si todos los frames ya estan en VRAM...
-
 			// Calcula la direccion del Gfx del frame
 			u32 address = 0;
 			address = PA_SPR256VRAM[screen][PA_SPRITEOAM[screen][id].gfxid].address + (PA_SPRITEOAM[screen][id].framesize * frame);
 			PA_SPRITEOAM[screen][id].gfx = (u32*)address;
-
 		}
-
 		// Almacena el frame actual
 		PA_SPRITEOAM[screen][id].frame = frame;
-
 	}
-
 }
-
-
 
 // Funcion PA_EnableSpriteRotScale();
 void PA_EnableSpriteRotScale(u8 screen, u8 sprite, u8 id, bool doublesize) {
-
 	// Verifica el rango de Id's de Sprites
 	if ((sprite < 0) || (sprite > 127)) {
 		PA_Error(106, "Sprite", 127);
@@ -420,39 +372,28 @@ void PA_EnableSpriteRotScale(u8 screen, u8 sprite, u8 id, bool doublesize) {
 		sprintf(text, "%d", screen);
 		PA_Error(112, text, sprite);
 	}
-
 	PA_SPRITEOAM[screen][sprite].rot = id;					// Id de rotacion (-1 ninguno) (0 - 31 Id de rotacion)
 	PA_SPRITEOAM[screen][sprite].doublesize = doublesize;	// Usar el "double size" al rotar ? ("NO" por defecto)
-
 }
-
-
 
 // Funcion PA_DisableSpriteRotScale();
 void PA_DisableSpriteRotScale(u8 screen, u8 sprite) {
-
 	// Verifica el rango de Id's de Sprites
 	if ((sprite < 0) || (sprite > 127)) {
 		PA_Error(106, "Sprite", 127);
 	}
-
 	// Verifica si el Sprite esta creado
 	if (!PA_SPRITEOAM[screen][sprite].created) {
 		char text[3];
 		sprintf(text, "%d", screen);
 		PA_Error(112, text, sprite);
 	}
-
 	PA_SPRITEOAM[screen][sprite].rot = -1;					// Id de rotacion (-1 ninguno) (0 - 31 Id de rotacion)
 	PA_SPRITEOAM[screen][sprite].doublesize = false;		// Usar el "double size" al rotar ? ("NO" por defecto)
-
 }
-
-
 
 // Funcion PA_SpriteRotScale();
 void PA_SpriteRotScale(u8 screen, u8 id, s16 angle, u16 sx, u16 sy) {
-
 	// Variables temporales
 	s16 in = 0;		// Angulo dado
 	s16 out = 0;	// Angulo convertido
@@ -460,26 +401,19 @@ void PA_SpriteRotScale(u8 screen, u8 id, s16 angle, u16 sx, u16 sy) {
 	in = angle;
 
 	// Limites del angulo
-	if (in < -512) {
-		in += 512;
-	}
-	if (in > 512) {
-		in -= 512;
-	}
+	if (in < -512) in += 512;
+	
+	if (in > 512) in -= 512;
+	
 	// Limites del factor X
-	if (sx < 0) {
-		sx = 0;
-	}
-	if (sx > 512) {
-		sx = 512;
-	}
+	if (sx < 0) sx = 0;
+	
+	if (sx > 512) sx = 512;
+	
 	// Limites del factor Y
-	if (sy < 0) {
-		sy = 0;
-	}
-	if (sy > 512) {
-		sy = 512;
-	}
+	if (sy < 0) sy = 0;
+	
+	if (sy > 512) sy = 512;
 	
 	// Si es un numero negativo...
 	if (in < 0) {
@@ -497,5 +431,4 @@ void PA_SpriteRotScale(u8 screen, u8 id, s16 angle, u16 sx, u16 sy) {
 	} else {
 		oamRotateScale(&oamSub, id, out, (512 - sx), (512 - sy));
 	}
-
 }
