@@ -1,5 +1,4 @@
 # PA2lib (Future: EUFLlib)
-# im working on a entire rewrite of the lib in order to garantee performance, also to get rid of the creative commons license
 Programmer's arsenal 2 (continuation of PALib and based on Nightfox's lib)</p>
 
 a very small, simple but powerful library<br>
