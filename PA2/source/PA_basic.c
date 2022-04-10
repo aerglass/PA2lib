@@ -156,10 +156,7 @@ void PA_Error(u16 code, const char* text, u32 value) {
 	iprintf("Error code %d.\n", (int)code);		// Imprime el codigo de error
 
 	// Deten la ejecucion del programa
-	while (1) {
-		swiWaitForVBlank();
-	}
-
+	while (1) swiWaitForVBlank();
 }
 
 
@@ -195,12 +192,9 @@ void PA_SetRoot(const char* folder) {
 				iprintf("using the Homebrew Menu.\n\n");
 			}
 			iprintf("http://sourceforge.net/projects/devkitpro/files/hbmenu/");
-			// Bucle iPAinito. Fin del programa
-			while(1) {
-				swiWaitForVBlank();
-			}
+			// Bucle infinito. Fin del programa
+			while(1) swiWaitForVBlank();
 		}
-
 	} else {	// Si se debe iniciar solo la FAT
 
 		// Define la carpeta inicial de la FAT
@@ -226,21 +220,13 @@ void PA_SetRoot(const char* folder) {
 				iprintf("is correctly patched.\n");
 			}
 			// Bucle iPAinito. Fin del programa
-			while(1) {
-				swiWaitForVBlank();
-			}
+			while(1) swiWaitForVBlank();
 		}
-
 	}
-
 }
-
-
-
 
 // Funcion PA_DmaMemCopy();
 void PA_DmaMemCopy(void* destination, const void* source, u32 size) {
-
 	// Funcion basada en la documentacion de Coranac
 	// http://www.coranac.com/2009/05/dma-vs-arm9-fight/
 
@@ -250,11 +236,9 @@ void PA_DmaMemCopy(void* destination, const void* source, u32 size) {
 
 	// Verifica si los datos estan correctamente alineados
 	if ((src | dst) & 1) {
-
 		// No estan alineados para un DMA copy
 		// Se realiza un copia con el memcpy();
 		memcpy(destination, source, size);
-
 	} else {
 
 		// Estan alineados correctamente
@@ -266,28 +250,17 @@ void PA_DmaMemCopy(void* destination, const void* source, u32 size) {
 		DC_FlushRange(source, size);
 
 		// Dependiendo de la alineacion de datos, selecciona el metodo de copia
-		if ((src | dst | size) & 3) {
-			// Copia de 16 bits
-			 dmaCopyHalfWords(3, source, destination, size);
-		} else {
-			// Copia de 32 bits
-			dmaCopyWords(3, source, destination, size);
-		}
+		if ((src | dst | size) & 3) dmaCopyHalfWords(3, source, destination, size); // Copia de 16 bits
+		else dmaCopyWords(3, source, destination, size);// Copia de 32 bits
 
 		// Evita que el destino sea almacenado en cache
 		DC_InvalidateRange(destination, size);
-
 	}
-
 }
-
-
 
 // Funcion PA_GetLanguage();
 u8 PA_GetLanguage(void) {
-
 	// Asegurate que el valor devuelto corresponde a los
 	// contenidos en los BITS 0, 1 y 2 de la direccion de memoria
 	return (PA_UDATA_LANG & 0x07);
-
 }
