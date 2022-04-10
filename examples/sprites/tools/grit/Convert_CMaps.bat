@@ -2,7 +2,7 @@
 cls
 del cmaps\*.cmp
 del h\*.h
-grit.exe bmp\*.bmp -g -gTFF00FF -m -mRt -mLf -p -ftb
+grit.exe bmp\*.bmp -g -gTFF00FF -m -mRt -mLf -p -ftb -gB8
 for /f "delims==" %%F in ('dir /b *.bin') do ren "%%~nxF" "%%~nF"
 ren *.map *.cmp
 ren *.img *.dat

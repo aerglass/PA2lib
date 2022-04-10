@@ -7,7 +7,7 @@ del affine\*.map
 del affine\*.pal
 del h\*.h
 
-grit.exe bmp\*.bmp -g -gTFF00FF -m -mRtf -mLa -p -pS -ftb -fa -Omypal.pal
+grit.exe bmp\*.bmp -g -gTFF00FF -m -mRtf -mLa -p -pS -ftb -fa -Omypal.pal -gB8
 
 for /f "delims==" %%F in ('dir /b *.bin') do ren "%%~nxF" "%%~nF"
 for /f "delims==" %%F in ('dir /b *.img') do copy "mypal.pal" "%%~nF.pal"

@@ -5,7 +5,7 @@ del fonts\*.map
 del fonts\*.pal
 del h\*.h
 
-grit.old.exe bmp\*.bmp -g -gTFF00FF -mR! -p -ftb
+grit.old.exe bmp\*.bmp -g -gTFF00FF -mR! -p -ftb -gB8
 
 for /f "delims==" %%F in ('dir /b *.bin') do ren "%%~nxF" "%%~nF"
 ren *.img *.fnt

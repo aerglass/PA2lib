@@ -6,7 +6,7 @@ del sprites\*.map
 del sprites\*.pal
 del h\*.h
 
-grit.exe bmp/*.bmp -g -gTFF00FF -p -ftb
+grit.exe bmp/*.bmp -g -gTFF00FF -p -ftb -gB8
 
 for /f "delims==" %%F in ('dir /b *.bin') do ren "%%~nxF" "%%~nF"
 move *.img sprites
