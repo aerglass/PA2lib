@@ -23,7 +23,7 @@ May break on new libnds/devkitarm releases.<br>
 Somehow some images have random colors or descoloration. <br>
 While i was making some examples the background made random stuff, so don't use gimp lol </p>
 Workarrounds:<br>
-fill the entire 256 colors with black, or else it wont work. You can try configuring grit for fixing this however i have absolutelly no idea on how to use grit.
+fill the entire 256 colors with black, or else it wont work. or put -gB8 flag while converting the backgrounds.
 <h2> why?</h2>
 Nightfox's lib for libnds isn't updated anymore.
 thus it can be incompatible with recent versions of libnds/devkitarm
