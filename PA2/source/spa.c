@@ -7,25 +7,31 @@
 #include <PA_lib.h>
 
 //SPA_Init Function
-void SPA_Init(){
+void SPA_Init(u8 screen){
         consoleDemoInit(); //initializes the text
         consoleClear(); //clears the text
         setBrightness(3,0); //sets brightness
         
-        PA_Init2D(0, 0); //inits 2D on bottom screen
-        PA_Init2D(1, 0); //inits 2D On top screen
+        PA_Init2D(screen, 0); //inits screen
         PA_SetRoot("NITROFS"); //Sets root in NITROFS
         PA_InitBgBuffers(); //inits bg buffers
-        PA_InitBg(0); //inits bg on bottom screen
-        PA_InitBg(1); //inits bg on top screen
+        PA_InitBg(screen); //inits bg on bottom screen
         PA_InitSpriteBuffers(); //inits sprite buffers
-        PA_InitSprite(0); //inits sprite on bottom screen
-        PA_InitSprite(1);//inits sprite on top screen
-        PA_InitText(0); //inits text on bottom screen
-        PA_InitText(1);//inits text on top screen
+        PA_InitSprite(screen); //inits sprite on bottom screen
+        PA_InitText(screen);//inits text on top screen
         PA_InitMapBuffers(); //inits map buffers
         PA_InitSoundBuffers(); //inits sound buffers
 }
+void SPA_InitDefault(u8 screen){
+        PA_Init2D(screen, 0);
+        PA_InitBgBuffers(); //inits bg buffers
+        PA_InitBg(screen); //inits bg on bottom screen
+        PA_InitSpriteBuffers(); //inits sprite buffers
+        PA_InitSprite(screen); //inits sprite on bottom screen
+        PA_InitText(screen);//inits text on top screen
+        PA_InitMapBuffers(); //inits map buffers
+        PA_InitSoundBuffers(); //inits sound buffers
+}        
 //SPA_WaitFor Function
 void SPA_WaitFor(int sec){
         int i = 0; //inits a variable.
