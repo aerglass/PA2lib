@@ -15,7 +15,7 @@ Date: 20/01/22
 
 int main(int argc, char **argv) {
 
-	SPA_Init();				//inits everything
+	SPA_Init(0);				//inits everything
 	SPA_LoadBg("PA2lib", "bg", 256, 256, 0, 3); //load and display background
 	//loop for ever.
 	while(1) {
