@@ -15,8 +15,9 @@ Date: 17/01/22
 //main block of the program.
 int main(int argc, char **argv) {
 	
-	SPA_Init();				//inits everything
-	
+	SPA_Init(1);				//inits everything
+	consoleDemoInit();	        	//inits libnds's text
+	printf("hello");           	 	//printf.
 	//loop for ever.
 	while(1) {
 		scanKeys();			//scan keys
