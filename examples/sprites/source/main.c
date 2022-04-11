@@ -15,8 +15,8 @@ Date: 17/01/22
 //main block of the program.
 int main(int argc, char **argv) {
 	int y = 192; //a variable for the ballon.
-	SPA_Init();				//inits everything
-
+	SPA_Init(1);				//inits everything
+	SPA_LoadBg("PA2lib", "bg", 256, 256, 1, 3); //loads background
 	SPA_LoadSprite(1,0,32,32,"ball",false); //Load the ball.
 	SPA_LoadSprite(1,1,32,32,"ballon",false); //Load the ballon.
 	PA_CreateSprite(1,0,0,0,0,0);//Create the ball
