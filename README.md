@@ -1,13 +1,16 @@
-# PA2lib
+# The (unstable) PA Compatibility layer bundled with PA2lib
 
-This is not the main version, this is very unstable prerelease release of PA2lib Lion. <br>
-This release is gonna be able to compile PAlib code, It will take and while, and for now it is not public, it is a mess. </p>
-I'll problably release the source code if it works or if it gets less messy (or maybe if someone donates lol) but for now this is what i got. <br>
-TODO LIST<br>
-Recreate EACH PAlib print function.<br>
-Recreate the PAlib renderer to make it work under PAGfx converted images.<br>
-Push a default font into the binary (i have absolutely no idea on how to do this)<br>
-profit.</p>
+The PA Compatibility layer allows for PA2lib (and possibly nightfox's lib with some work) to compile (extremelly simple) PAlib code.<br>
+Currently only text functions are supported (PA_InitText, PA_OutputText, PA_OutputSimpleText) without any numbers included.</p>
+<strong> THE PA COMPATIBILITY LAYER NEEDS A DEFAULT FONT (default.pal, default.fnt) INSIDE IN THE NITROFILES FOLDER.</strong>
+Installation:<br>
+Get the latest palib-backwards-compatibility branch master version of PA2lib, which already comes included with the PA Compatibility layer.<br>
+<strong> YOU WANT TO COMPILE THE LIB BY YOURSELF DOUBLE-CLICK THE BUILD.BAT OR ELSE IT WON'T WORK.</strong></p>
 
-PAlib was a library made in 2007 that made libnds easy to use, unfortuonally this lib was badly designed and it not longer works.</p>
-PA2lib is meant to replace PAlib, as this prerelease is able to compile some (with some work) simple PAlib code. Surely on the future it will work better!</p>
+Usage:<br>
+Enter the folder on the PAlib proyect<br>
+Copy the nitrofiles folder with a font named default.fnt and default.pal.<br>
+Create the PA2 folder and copy the "include" and "lib" folders to the PA2 folder of the compile PA2 folder.<br>
+Copy the makefile from one of the examples, it will work <br>
+If you can, change the line <code> #include &lt;PA9.h&gt; to #include &lt;spa.h&gt;
+Now you want to run make on the root of the folder, Good luck man trying to make it actually work, it may need changes.<br>
