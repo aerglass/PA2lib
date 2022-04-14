@@ -2,7 +2,7 @@
 
 The PA Compatibility layer allows for PA2lib (and possibly nightfox's lib with some work) to compile (extremelly simple) PAlib code.<br>
 Currently only text functions are supported (PA_InitText, PA_OutputText, PA_OutputSimpleText) without any numbers included.</p>
-<strong> THE PA COMPATIBILITY LAYER NEEDS A DEFAULT FONT (default.pal, default.fnt) INSIDE IN THE NITROFILES FOLDER.</strong>
+<strong> THE PA COMPATIBILITY LAYER NEEDS A DEFAULT FONT (default.pal, default.fnt) INSIDE IN THE NITROFILES FOLDER.</strong></p>
 Installation:<br>
 Get the latest palib-backwards-compatibility branch master version of PA2lib, which already comes included with the PA Compatibility layer.<br>
 <strong> YOU WANT TO COMPILE THE LIB BY YOURSELF DOUBLE-CLICK THE BUILD.BAT OR ELSE IT WON'T WORK.</strong></p>
