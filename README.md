@@ -12,5 +12,5 @@ Enter the folder on the PAlib proyect<br>
 Copy the nitrofiles folder with a font named default.fnt and default.pal.<br>
 Create the PA2 folder and copy the "include" and "lib" folders to the PA2 folder of the compile PA2 folder.<br>
 Copy the makefile from one of the examples, it will work <br>
-If you can, change the line <code> #include &lt;PA9.h&gt; to #include &lt;spa.h&gt;
+If you can, change the line <code> #include &lt;PA9.h&gt;</code> to <code>#include &lt;spa.h&gt;</code>
 Now you want to run make on the root of the folder, Good luck man trying to make it actually work, it may need changes.<br>
