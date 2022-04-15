@@ -39,6 +39,22 @@ extern "C" {
   #define OBJ_SIZE_64X32  6432
   #define OBJ_SIZE_64X64  6464
 
+typedef struct {
+  u8 A, B, X, Y, L, R, Up, Down, Right, Left, Start, Select, Anykey;
+} PA_Pad;
+
+typedef struct {
+  PA_Pad Held, Released, Newpress; // Pressed si on appuye, Held si on garde appuyé, et Released si on relache
+} Pads;
+
+typedef struct {
+  u8 Held, Released, Newpress, Newpress0;
+  s16 X, Y, altX, altY, Pressure, Vx, Vy, oldVx, oldVy, Downtime, Uptime, DblClick;
+} PA_Stylus;
+
+
+extern Pads Pad;
+extern PA_Pad* PadPointer;
   void PA_Init();//function init
   void PA_InitText(u8 screen, u8 layer);
   void PA_OutputText(u8 screen, int x, int y, const char *text);
@@ -56,6 +72,7 @@ extern "C" {
   void SPA_SetSpriteY(int screen, int id, s32 y);//sets sprite y
   void PA_SetSpriteXY(int screen, int id, s32 x, s32 y);//sets sprite xy
   void PA_FlipSprite(int screen, int id, int hflip, int vflip);//flip sprite
+  Pads Pad;
   #endif
 
 #ifdef __cplusplus
