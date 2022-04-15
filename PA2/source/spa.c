@@ -189,8 +189,12 @@ void PA_WaitForVBL() {
 
     PA_SpriteOamSet(0);//set sprite oam to 0
     oamUpdate(&oamMain);//update oam
+        
     PA_UpdateTextLayers();//update text layers
     swiWaitForVBlank(); //waits for vblank
+    PA_UPDATEPAD(Held, keysHeld());
+    PA_UPDATEPAD(Newpress, keysDown());
+    PA_UPDATEPAD(Released, keysUp());
 }
 //SPA_SetSpriteX
 void SPA_SetSpriteX(int screen, int id, s32 x){
