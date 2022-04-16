@@ -13,4 +13,8 @@ Copy the nitrofiles folder with a font named default.fnt and default.pal.<br>
 Create the PA2 folder and copy the "include" and "lib" folders to the PA2 folder of the compile PA2 folder.<br>
 Copy the makefile from one of the examples, it will work <br>
 If you can, change the line <code> #include &lt;PA9.h&gt;</code> to <code>#include &lt;spa.h&gt;</code>
-Now you want to run make on the root of the folder, Good luck man trying to make it actually work, it may need changes.<br>
+Now you want to run make on the root of the folder, Good luck man trying to make it actually work, it may need changes.</p>
+
+Todo list:<br>
+get pagfx to actually work without any help from palib's dev(this is another way to say how to torture yourself)<br>
+get backgrounds to actually work without help from palib's dev (another way to say how to torture yourself<br>
