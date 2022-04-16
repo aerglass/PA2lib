@@ -72,7 +72,6 @@ extern PA_Pad* PadPointer;
   void SPA_SetSpriteY(int screen, int id, s32 y);//sets sprite y
   void PA_SetSpriteXY(int screen, int id, s32 x, s32 y);//sets sprite xy
   void PA_FlipSprite(int screen, int id, int hflip, int vflip);//flip sprite
-  Pads Pad;
   #endif
 
 #ifdef __cplusplus
