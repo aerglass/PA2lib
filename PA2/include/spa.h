@@ -68,8 +68,8 @@ extern PA_Pad* PadPointer;
   void PA_UnloadBackground(int screen, int layer, const char *name);//unloads bg
   void PA_UnloadSprite(int screen, int id);//unload sprite
   void PA_WaitForVBL();//flush
-  void SPA_SetSpriteX(int screen, int id, s32 x);//sets sprite x
-  void SPA_SetSpriteY(int screen, int id, s32 y);//sets sprite y
+  void PA_SetSpriteX(int screen, int id, s32 x);//sets sprite x
+  void PA_SetSpriteY(int screen, int id, s32 y);//sets sprite y
   void PA_SetSpriteXY(int screen, int id, s32 x, s32 y);//sets sprite xy
   void PA_FlipSprite(int screen, int id, int hflip, int vflip);//flip sprite
   #endif
