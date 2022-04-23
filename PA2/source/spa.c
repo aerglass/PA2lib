@@ -40,17 +40,18 @@ void PA_Init(){
 }
 void PA_InitVBL(){
     //... Do nothing because PA_InitVBL(); is useless. I may give a use to this after all lol.
-    if(0 == 0) while(1) break;
 }
 void PA_InitText(u8 screen, u8 layer){
     switch(screen){
     case 0:
+    if(T_BG_L != 0) while(1) swiWaitForVBlank(); //if the thing is reinitialized then hang forever.
     NF_InitText(1);
     PA_LoadFont("default", "default", 256, 256, 1);
     PA_CreateTextLayer(1, layer, 0, "default");
     T_BG_L = layer;
     break;
     case 1:
+    if(S_BG_L != 0) while(1) swiWaitForVBlank(); //if the thing is reinitialized then hang forever.
     S_BG_L = layer;
     NF_InitText(0);
     PA_LoadFont("default", "default", 256, 256, 0);
