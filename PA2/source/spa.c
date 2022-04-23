@@ -197,11 +197,11 @@ void PA_WaitForVBL() {
     PA_UPDATEPAD(Released, keysUp());
 }
 //SPA_SetSpriteX
-void SPA_SetSpriteX(int screen, int id, s32 x){
+void PA_SetSpriteX(int screen, int id, s32 x){
 PA_MoveSprite(screen, id, x, false); //move sprite
 }
 //SPA_SetSpriteY
-void SPA_SetSpriteY(int screen, int id, s32 y){
+void PA_SetSpriteY(int screen, int id, s32 y){
         PA_MoveSprite(screen, id, false ,y); //move sprite
 }
 //SPA_SetSpriteXY
