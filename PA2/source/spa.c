@@ -24,7 +24,6 @@ u8 S_BG_L = 0;
 void PA_Init(){
         consoleDemoInit(); //initializes the text
         consoleClear(); //clears the text
-        setBrightness(3,0); //sets brightness
         
         PA_Init2D(0, 0); //inits screen
         PA_Init2D(1, 0);
@@ -163,11 +162,33 @@ void PA_LoadSprite(u8 screen, int id, int size, const char *dir){
             PA_VramSpriteGfx(screen, id, id, false); //loads sprite gfx on VRAM
             PA_VramSpritePal(screen, id, id); //loads sprite pal on VRAM
             break;
+            case default:
+            consoleDemoInit();
+            consoleClear();
+            iprintf("DO NOT MESS WITH THE SPRITE SIZE. Error, Hang forever");
+            while(1) swiWaitForVBlank();
+            break;
         }
 }
 void PA_LoadBackground(u8 screen, u8 layer, const char *dir){
+    if(layer != 0 && layer != 1 && layer != 2 && layer != 3){
+        consoleDemoInit();
+        consoleClear();
+        iprintf("DO NOT MESS WITH THE BG LAYER. YOU ARE WARNED.");
+        while(1) swiWaitForVBlank();
+    }
     PA_LoadBg(dir, dir, 512, 512); //loads background
-    PA_CreateBg(screen, layer, dir); //creates background
+    switch(screen){
+        case 0: PA_CreateBg(1, layer, dir); //creates background
+        break;
+        case 1: PA_CreateBg(0, layer, dir); //creates background
+        break; 
+        case default:consoleDemoInit();
+        consoleClear();
+        iprintf("DO NOT MESS WITH THE SCREEN, YOU ARE WARNED.");
+        while(1) swiWaitForVBlank();
+        break;
+    }
 }
 //SPA_UnlodBg
 void PA_UnloadBackground(int screen, int layer, const char *name) {
@@ -186,13 +207,11 @@ void PA_UnloadSprite(int screen, int id) {
 void PA_WaitForVBL() {
     scanKeys();
     PA_SpriteOamSet(1);//set sprite oam to 1
-    oamUpdate(&oamSub);//updates oam
-
     PA_SpriteOamSet(0);//set sprite oam to 0
-    oamUpdate(&oamMain);//update oam
-        
-    PA_UpdateTextLayers();//update text layers
     swiWaitForVBlank(); //waits for vblank
+    PA_UpdateTextLayers();//update text layers
+    oamUpdate(&oamSub);//updates oam
+    oamUpdate(&oamMain);//update oam
     PA_UPDATEPAD(Held, keysHeld());
     PA_UPDATEPAD(Newpress, keysDown());
     PA_UPDATEPAD(Released, keysUp());
