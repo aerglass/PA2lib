@@ -1,5 +1,5 @@
 # The (unstable) PA Compatibility layer bundled with PA2lib
-<h2> Due to depretion (school, etc) No new PA2lib releases for now (maybe in the future i will realease) but on my free time i will try to get PAGfx working in libnds (because nflib does not support graphics stored on RAM, afaik) as working on free software always make feel me better :) </h2>
+<h2> Due to depretion (school, etc) PA2lib releases will be less frequent (maybe in the future i will realease) but on my free time i will try to get PAGfx working in libnds (because nflib does not support graphics stored on RAM, afaik) as working on free software always make feel me better :) </h2>
 The PA Compatibility layer allows for PA2lib (and possibly nightfox's lib with some work) to compile (extremelly simple) PAlib code.<br>
 Currently only text functions are supported (PA_InitText, PA_OutputText, PA_OutputSimpleText) without any numbers included.</p>
 <strong> THE PA COMPATIBILITY LAYER NEEDS A DEFAULT FONT (default.pal, default.fnt) INSIDE IN THE NITROFILES FOLDER.</strong></p>
