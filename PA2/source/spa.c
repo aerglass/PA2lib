@@ -80,6 +80,17 @@ void PA_OutputSimpleText(u8 screen, int x, int y, const char *text){
         break;
     }
 }
+void PA_SetTextCol(u8 screen, u16 r, u16 g, u16 b){
+        switch(screen){
+                case 0: PA_DefineTextColor(1,T_BG_L,0,r,g,b);
+                        PA_SetTextColor(1,T_BG_L,0);
+                        break;
+                case 1:
+                        PA_DefineTextColor(0,S_BG_L,0,r,g,b);
+                        PA_SetTextColor(0,S_BG_L,0);
+                        break;
+        }
+}
 //SPA_WaitFor Function
 void PA_WaitFor(int sec){
         int i = 0; //inits a variable.
