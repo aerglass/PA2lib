@@ -278,7 +278,7 @@ void PA_EasyBgScrollXY(u8 screen, u8 layer, s16 x, s16 y) {
 }
 
 // Funcion PA_MoveSprite();
-void PA_MoveSprite(u8 screen, u8 id, s16 x, s16 y) {
+void PA_SetSpriteXY(u8 screen, u8 id, s16 x, s16 y) {
 	PA_SPRITEOAM[screen][id].x = x;		// Coordenada X
 	PA_SPRITEOAM[screen][id].y = y;		// Coordenada Y
 }
@@ -431,4 +431,19 @@ void PA_SpriteRotScale(u8 screen, u8 id, s16 angle, u16 sx, u16 sy) {
 	} else {
 		oamRotateScale(&oamSub, id, out, (512 - sx), (512 - sy));
 	}
+}
+// unload gfx and pallete in ram and vram
+
+void PA_UnloadSprite(int screen, int id) {
+
+    // ram
+
+    PA_UnloadSpriteGfx(id); //unload sprite gfx
+
+    PA_UnloadSpritePal(id);//unload sprite pal
+
+
+
+    PA_FreeSpriteGfx(screen, id);//frees sprite gfx
+
 }
