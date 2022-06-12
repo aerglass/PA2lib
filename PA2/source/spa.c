@@ -206,14 +206,6 @@ void PA_UnloadBackground(int screen, int layer, const char *name) {
     PA_DeleteBg(screen, layer); //delete bg
     PA_UnloadBg(name); //unload bg
 }
-// unload gfx and pallete in ram and vram
-void PA_UnloadSprite(int screen, int id) {
-    // ram
-    PA_UnloadSpriteGfx(id); //unload sprite gfx
-    PA_UnloadSpritePal(id);//unload sprite pal
-
-    PA_FreeSpriteGfx(screen, id);//frees sprite gfx
-}
 //SPA_Flush
 void PA_WaitForVBL() {
     scanKeys();
@@ -226,21 +218,4 @@ void PA_WaitForVBL() {
     PA_UPDATEPAD(Held, keysHeld());
     PA_UPDATEPAD(Newpress, keysDown());
     PA_UPDATEPAD(Released, keysUp());
-}
-//SPA_SetSpriteX
-void PA_SetSpriteX(int screen, int id, s32 x){
-PA_MoveSprite(screen, id, x, false); //move sprite
-}
-//SPA_SetSpriteY
-void PA_SetSpriteY(int screen, int id, s32 y){
-        PA_MoveSprite(screen, id, false ,y); //move sprite
-}
-//SPA_SetSpriteXY
-void PA_SetSpriteXY(int screen, int id, s32 x, s32 y){
-        PA_MoveSprite(screen, id, x, y);//move sprite
-}
-//SPA_FlipSprite
-void PA_FlipSprite(int screen, int id, int hflip, int vflip){
-        PA_HflipSprite(screen, id, hflip);//hflips sprite
-        PA_VflipSprite(screen, id, vflip);//vflips sprite
 }
