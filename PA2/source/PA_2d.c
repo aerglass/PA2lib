@@ -11,7 +11,7 @@
 #include "PA_sprite256.h"
 
 // Funcion PA_Set2D();
-void PA_Init2D(u8 screen, u8 mode) {
+void PA_SetVideoMode(u8 screen, u8 mode) {
 	if (screen == 0) {		// Pantalla Superior
 		switch (mode) {		// Selecciona modo
 			case 0:		
@@ -135,7 +135,7 @@ void PA_HideBg(u8 screen, u8 layer) {
 }
 
 // Funcion PA_ScrollBg();
-void PA_ScrollBg(u8 screen, u8 layer, s16 x, s16 y) {
+void PA_EasyBgScrollXY(u8 screen, u8 layer, s16 x, s16 y) {
 	// Variables temporales
 	s16 sx = x;
 	s16 sy = y;
@@ -297,7 +297,7 @@ void PA_ShowSprite(u8 screen, u8 id, bool show) {
 
 
 // Funcion PA_HflipSprite();
-void PA_HflipSprite(u8 screen, u8 id, bool hflip) {
+void PA_SetSpriteHflip(u8 screen, u8 id, bool hflip) {
 	PA_SPRITEOAM[screen][id].hflip = hflip;		// Volteado horizontal;
 }
 
@@ -307,7 +307,7 @@ bool PA_GetSpriteHflip(u8 screen, u8 id) {
 }
 
 // Funcion PA_VflipSprite();
-void PA_VflipSprite(u8 screen, u8 id, bool vflip) {
+void PA_SetSpriteVflip(u8 screen, u8 id, bool vflip) {
 	PA_SPRITEOAM[screen][id].vflip = vflip;		// Volteado vertical;
 }
 
@@ -317,7 +317,7 @@ bool PA_GetSpriteVflip(u8 screen, u8 id) {
 }
 
 // Funcion PA_SpriteFrame();
-void PA_SpriteFrame(u8 screen, u8 id, u16 frame) {
+void PA_SetSpriteAnimFrame(u8 screen, u8 id, u16 frame) {
 	// Verifica el rango de Id's de Sprites
 	if ((id < 0) || (id > 127)) {
 		PA_Error(106, "Sprite", 127);
