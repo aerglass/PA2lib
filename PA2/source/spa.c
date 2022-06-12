@@ -23,10 +23,9 @@ u8 S_BG_L = 0;
 //SPA_Init Function
 void PA_Init(){
         consoleDemoInit(); //initializes the text
-        consoleClear(); //clears the text
         
-        PA_Init2D(0, 0); //inits screen
-        PA_Init2D(1, 0);
+        PA_SetVideoMode(0, 0); 
+        PA_SetVideoMode(1, 0);
         PA_SetRoot("NITROFS"); //Sets root in NITROFS
         PA_InitBgBuffers(); //inits bg buffers
         PA_InitBg(0); //inits bg on bottom screen
@@ -200,11 +199,6 @@ void PA_LoadBackground(u8 screen, u8 layer, const char *dir){
         while(1) swiWaitForVBlank();
         break;
     }
-}
-//SPA_UnlodBg
-void PA_UnloadBackground(int screen, int layer, const char *name) {
-    PA_DeleteBg(screen, layer); //delete bg
-    PA_UnloadBg(name); //unload bg
 }
 //SPA_Flush
 void PA_WaitForVBL() {
