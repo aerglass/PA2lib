@@ -1317,3 +1317,59 @@ void PA_RotateTileGfx(u8 slot, u16 tile, u8 rotation) {
 	free (character_b);
 
 }
+
+// Funcion PA_LoadTiledBg();
+void PA_LoadBackground(u8 screen, u8 layer, const PA_BgStruct* bgStruct) {
+	// Busca un slot libre
+
+	char name[9];
+	sprintf(name, "bg%d%d",screen,layer);
+	u8 n = 0;
+	u8 slot = 255;
+	for (n = 0; n < PA_SLOTS_TBG; n ++) {		// Busca en todos los slots
+		if (PA_TILEDBG[n].available) {			// Si esta libre
+			PA_TILEDBG[n].available = false;	// Marcalo como en uso
+			slot = n;							// Guarda el slot a usar
+			n = PA_SLOTS_TBG;					// Deja de buscar
+		}
+	}
+	// Si no hay ningun slot libre, error
+	if (slot == 255) {
+		PA_Error(103, "Tiled Bg", PA_SLOTS_TBG);
+	}
+
+	// Vacia los buffers que se usaran
+	free(PA_BUFFER_BGMAP[slot]);		// Buffer para los mapas
+	PA_BUFFER_BGMAP[slot] = NULL;
+	free(PA_BUFFER_BGTILES[slot]);		// Buffer para los tiles
+	PA_BUFFER_BGTILES[slot] = NULL;
+	free(PA_BUFFER_BGPAL[slot]);		// Buffer para los paletas
+	PA_BUFFER_BGPAL[slot] = NULL;
+	//tiles
+	PA_TILEDBG[slot].tilesize = bgStruct->BgMap_size;
+	PA_BUFFER_BGTILES[slot] = (char*) calloc(PA_TILEDBG[slot].tilesize, sizeof(char));
+	if(PA_BUFFER_BGTILES[slot] == NULL) PA_Error(102,NULL,PA_TILEDBG[slot].tilesize);
+	PA_DmaMemCopy(PA_BUFFER_BGTILES[slot],bgStruct->BgTiles,bgStruct->BgTiles_size);
+
+	//map
+	PA_TILEDBG[slot].mapsize = bgStruct->BgMap_size;
+	PA_BUFFER_BGMAP[slot] = (char*) calloc (PA_TILEDBG[slot].mapsize, bgStruct->BgMap_size); 
+	if(PA_BUFFER_BGMAP[slot] == NULL) PA_Error(102,NULL,PA_TILEDBG[slot].mapsize);
+	PA_DmaMemCopy(PA_BUFFER_BGMAP[slot],bgStruct->BgMap,bgStruct->BgMap_size);
+
+	//pal
+	PA_TILEDBG[slot].palsize = 512;
+	PA_BUFFER_BGPAL[slot] = (char*) calloc(512,sizeof(char));
+	PA_DmaMemCopy(PA_BUFFER_BGPAL[slot],bgStruct->BgPalette,512);
+
+	// Guarda el nombre del Fondo
+	sprintf(PA_TILEDBG[slot].name, "%s", name);
+
+	// Y las medidas
+	PA_TILEDBG[slot].width = bgStruct->width;
+	PA_TILEDBG[slot].height = bgStruct->height;
+
+	//Ahora crear el tiledbg
+	if(screen == 0) PA_CreateBg(1,3,name);
+	else if(screen == 1) PA_CreateBg(0,3,name);
+}
