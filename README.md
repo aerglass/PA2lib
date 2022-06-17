@@ -1,20 +1,23 @@
-# The (unstable) PA Compatibility layer bundled with PA2lib
-<h2> Due to depretion (school, etc) PA2lib releases will be less frequent (maybe in the future i will realease) but on my free time i will try to get PAGfx working in libnds (because nflib does not support graphics stored on RAM, afaik) as working on free software always make feel me better :) </h2>
-The PA Compatibility layer allows for PA2lib (and possibly nightfox's lib with some work) to compile (extremelly simple) PAlib code.<br>
-Currently only text functions are supported (PA_InitText, PA_OutputText, PA_OutputSimpleText) without any numbers included.</p>
-<strong> THE PA COMPATIBILITY LAYER NEEDS A DEFAULT FONT (default.pal, default.fnt) INSIDE IN THE NITROFILES FOLDER.</strong></p>
-Installation:<br>
-Get the latest palib-backwards-compatibility branch master version of PA2lib, which already comes included with the PA Compatibility layer.<br>
-<strong> YOU WANT TO COMPILE THE LIB BY YOURSELF DOUBLE-CLICK THE BUILD.BAT OR ELSE IT WON'T WORK.</strong></p>
+<h1> PA2lib library </h1>
+PA2lib is a library that aims to be similar to the now obsoleted PAlib, which fell against devkitARM r33 RIP.<br><br>
 
-Usage:<br>
-Enter the folder on the PAlib proyect<br>
-Copy the nitrofiles folder with a font named default.fnt and default.pal.<br>
-Create the PA2 folder and copy the "include" and "lib" folders to the PA2 folder of the compile PA2 folder.<br>
-Copy the makefile from one of the examples, it will work <br>
-If you can, change the line <code> #include &lt;PA9.h&gt;</code> to <code>#include &lt;spa.h&gt;</code>
-Now you want to run make on the root of the folder, Good luck man trying to make it actually work, it may need changes.</p>
+It can compile some PAlib code, not all but it has some compatibility, suporting for now bg and text functions.<br>
+It is based on NFlib. Still I wouldn't recommend you to use this lib as your main lib because it can be painful (unexpected errors, compatibility issues, maybe even a nuclear explosion)
 
-Todo list:<br>
-get pagfx to actually work without any help from palib's dev(this is another way to say how to torture yourself)<br>
-get backgrounds to actually work without help from palib's dev (another way to say how to torture yourself<br>
+<h1> Usage </h1>
+PA2lib is pretty simple, you need a custom Makefile, I made one but it does not support nitroFS for some reason, that means a ton of stuff will be broken so it is not my fault that you don't have the custom Makefile jaja. It must have some rules that are used in PAlib proyects to link graphics. I will be using Manjaro Linux for the process, but it will be similar to other linux distros or even windows or mac.<br><br>
+
+Get yourself the latest release of PA2lib if you want the best stability, if you want to die of unexpected errors you can get the main branch too!.<br>
+If you can, COMPILE THE LIB BY YOURSELF, if you can't then you are out of luck. Go to the PA2 folder, open a terminal type in "make clean" and delete the build and lib folders. after that type in "make" into the termianl. You are done compiling, easy right?<br><br>
+
+Now lets integrate it into a PAlib proyect, get yourself the custom Makefile, I will problably upload it later, but keep in mind that it problably won't work under nitroFS/filesystem stuff. Delete the build and the Makefile, next you copy the custom Makefile that you created, create a folder called PA2 and copy the include and lib folders to the proyect's PA2 folder. try to compile after that, if it does not work then it is not my fault, wait 8 years until the support for that is added. PAlib is so complex that it will problably take more than 1 year to give PA2lib full support over PAlib code.<br>
+
+<h1> Donating </h1>
+Maintaining this takes so long but it is something i love to do.<br>
+I only accept cryto but that may change in the future.<br>
+
+
+
+Crypto Matic: 0x4032a81A79cB216C0F85a742Ee95D314176E8395<br>
+Ethereum: 0x4032a81A79cB216C0F85a742Ee95D314176E8395<br>
+
