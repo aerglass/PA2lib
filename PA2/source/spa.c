@@ -180,26 +180,6 @@ void PA_LoadSprite(u8 screen, int id, int size, const char *dir){
             break;
         }
 }
-void PA_LoadBackground(u8 screen, u8 layer, const char *dir){
-    if(layer != 0 && layer != 1 && layer != 2 && layer != 3){
-        consoleDemoInit();
-        consoleClear();
-        iprintf("DO NOT MESS WITH THE BG LAYER. YOU ARE WARNED.");
-        while(1) swiWaitForVBlank();
-    }
-    PA_LoadBg(dir, dir, 512, 512); //loads background
-    switch(screen){
-        case 0: PA_CreateBg(1, layer, dir); //creates background
-        break;
-        case 1: PA_CreateBg(0, layer, dir); //creates background
-        break; 
-        case default:consoleDemoInit();
-        consoleClear();
-        iprintf("DO NOT MESS WITH THE SCREEN, YOU ARE WARNED.");
-        while(1) swiWaitForVBlank();
-        break;
-    }
-}
 //SPA_Flush
 void PA_WaitForVBL() {
     scanKeys();
