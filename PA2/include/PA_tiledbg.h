@@ -7,7 +7,7 @@ extern "C" {
 
 // Includes devKitPro
 #include <nds.h>
-
+#include <PA_BgStruct.h>
 
 // Define los slots maximos para los fondos
 #define PA_SLOTS_TBG 64			// Datos de los fondos
