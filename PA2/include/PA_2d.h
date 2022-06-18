@@ -35,7 +35,7 @@ void PA_ScrollBg(u8 screen, u8 layer, s16 x, s16 y);
 
 
 // Funcion PA_MoveSprite();
-void PA_MoveSprite(u8 screen, u8 id, s16 x, s16 y);
+void PA_SetSpriteXY(u8 screen, u8 id, s16 x, s16 y);
 // Mueve el Sprite a las coordenadas especificadas
 // Debes de indicar la pantalla, id de sprite y coordenadas
 
