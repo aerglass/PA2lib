@@ -210,6 +210,8 @@ void PA_RotateTileGfx(u8 slot, u16 tile, u8 rotation);
 // 2 - 90� a la izquierda
 // 3 - 180�
 
+	void PA_LoadBackground(u8 screen, u8 layer, const PA_BgStruct *bgStruct);
+	//... The PAGfx Bg Compatibility layer
 
 #endif
 
