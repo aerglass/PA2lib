@@ -1,0 +1,29 @@
+<html>
+<body>
+	<h1> PAlib technical Info </h1>
+	<a href="index.html"> index </a><br>
+	<h1> PAGfx </h1>
+	PAGfx is a tool used for converting graphics to be able to be used with PAlib. Or basically it converts the graphics to a format that the Nintendo DS can use. It is basically grit renamed with more source<br>
+	<h1> The PAGC frontend </h1>
+	The PAGc frontend is a UI for PAGfx that sets up the config file for convertion, it allow you to select the files. <br>
+	<h1> Libnds And PAGfx DO NOT MIX WELL. </h1>
+	I was recently trying to get PAGfx working on libnds to be able to get it working, Big mistake<br>
+	I tried more than 6 times, 3 different modes, tiled, 8 bit, and sprites.<br>
+	With BGs it causes screen corruptions, it also needs changes to the PAGfx converted files or else it won't compile<br>
+	Here I put the corruptions<br>
+	<img src="l-p-corruptions/01.png"><br>
+	<img src="l-p-corruptions/02.png"><br>
+	<img src="l-p-corruptions/03.png"><br>
+	<img src="l-p-corruptions/04.png"><br>
+	<img src="l-p-corruptions/05.png"><br>
+	<img src="l-p-corruptions/06.png"><br>
+	<img src="l-p-corruptions/07.png"></p>
+	<h1> This is how PAGfx works. </h1><br>
+	First of all it dectects a file called "PAGfx.ini", it contains the directory of the files and the configuration itself.<br>
+	Next it creates a file called "all_gfx.h", it contains all the image definitions. For older PAGfx versions it creates also a all_gfx.c file.</p>
+	For each image PAGfx creates a C file with the name of the image that was converted. It contains some definitions.</p>
+	for Backgrounds it creates a <a href="PABgStruct.html"> PA_BgStruct </a> struct and defines everything.<br>
+	for sprites it creates a C file containing the variables needed for the PAlib.</p>
+
+	</body>
+	</html>
