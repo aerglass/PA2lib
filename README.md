@@ -1,4 +1,7 @@
 <h1> PA2lib library </h1>
+<h1> THIS LIBRARY IS DEAD. </h1>
+I had fun developing this but I have to say goodbye.<br><br>
+
 PA2lib is a library that aims to be similar to the now obsoleted PAlib, which fell against devkitARM r33 RIP.<br><br>
 
 It can compile some PAlib code, not all but it has some compatibility, suporting for now bg and text functions.<br>
