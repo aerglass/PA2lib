@@ -1,5 +1,9 @@
 <h1> PA2lib library </h1>
-I had fun developing this but I have to say goodbye.<br><br>
+<h1> This library has been replaced with dPAlib,https://github.com/AerGlass/dPAlib </h1>
+You know, vanilla code is better than remaking. dPAlib is easier to maintain. <br><br><br>
+
+
+
 
 PA2lib is a library that aims to be similar to the now obsoleted PAlib, which fell against devkitARM r33 RIP.<br><br>
 
